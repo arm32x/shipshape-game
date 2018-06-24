@@ -47,5 +47,9 @@
     ">0.5%",
     "Chrome 49",
     "last 3 versions"
-  ]
+  ],
+  "scripts": {
+    "start": "env NODE_ENV=production bash -c 'gulp && node app.js'",
+	"start-dev": "env NODE_ENV=development nodemon node_modules/.bin/gulp --watch gulpfile.js"
+  }
 }
