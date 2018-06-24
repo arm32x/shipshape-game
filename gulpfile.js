@@ -77,9 +77,9 @@ gulp.task('build', gulp.parallel('build-css', 'build-js'));
 gulp.task('server', () => {
 	// Create the server from our 'app.js' file.
 	let server = gls.new('app.js');
-	// If the SCSS changes, compile it and notify LiveReload.
+	// If the SCSS changes, compile it.
 	gulp.watch('app/res/scss/**/*.scss', gulp.task('build-css'));
-	// If the JS changes, compile it and notify LiveReload.
+	// If the JS changes, compile it.
 	gulp.watch('app/res/js/**/*.es6.js', gulp.task('build-js'));
 	// If any other part of the app changes, restart the server.
 	gulp.watch([ 'app.js', 'app/**/*', '!app/res{,/**}' ], gulp.series((done) => { server.stop(); done(); }, 'server'));
