@@ -6,7 +6,16 @@
 @import 'typography';
 
 
-body {
-	margin: 0px;
+html {
+	background: {
+		color: #E0E0E0;
+		image: url('/res/images/background.png');
+		repeat: repeat;
+	};
+	min-height: 100vh;
+
+	body {
+		margin: 0px;
+	}
 }
 
