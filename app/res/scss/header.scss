@@ -8,7 +8,11 @@
 
 .shp-header {
 	margin-bottom: -64px;
-	background-color: $primary-color;
+	background: {
+		color: $primary-color;
+		image: url('/res/images/header-texture.png'), linear-gradient(-11.25deg, adjust-hue($primary-color, 11.25deg), adjust-hue($primary-color, -11.25deg));
+		repeat: repeat;
+	};
 	color: $white-text-color-1;
 
 	.shp-header__row {
