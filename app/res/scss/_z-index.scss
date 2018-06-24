@@ -1,0 +1,8 @@
+/// ShipShape -> res -> scss -> _z-index.scss
+/// 	Register z-indices for various elements.
+
+
+$z-index-content      :  0;
+$z-index-header       : 10;
+$z-index-header-under : -5;
+

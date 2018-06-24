@@ -1,0 +1,38 @@
+/// ShipShape -> res -> scss -> _typography.scss
+/// 	Handles font styling and typography on the website.
+
+
+// Declare some font stacks for use in the website.
+$body-text-fonts : 'Work Sans', 'IBM Plex Sans', 'Trebuchet MS', 'Arial', sans-serif;
+$monospace-fonts : 'Space Mono', 'IBM Plex Mono', 'Cousine', 'Courier New', monospace;
+$logo-text-fonts : 'Lobster Two', $monospace-fonts;
+
+
+// Convert from any unit to rem.  This should only be used for font sizes and
+// line heights.
+@function to-rem($value) {
+	@return ($value / 16px) * 1rem;
+}
+
+
+// Apply the fonts to various elements on the website, and add margins to them.
+
+html {
+	font: 100% $body-text-fonts;
+	line-height: 1.15em;
+
+	@at-root body {
+		font-size: to-rem(14px);
+	}
+}
+
+.shp-logo {
+	margin: 0px;
+	font: bold to-rem(64px) $logo-text-fonts;
+	line-height: 1em;
+
+	&.shp-logo--small {
+		font-size: to-rem(24px);
+	}
+}
+

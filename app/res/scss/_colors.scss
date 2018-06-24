@@ -1,0 +1,42 @@
+/// ShipShape -> res -> scss -> _colors.scss
+/// 	Define the color palette for the rest of the app.
+
+
+// Define the main brand colors of ShipShape's color palette.
+$primary-color   : #255BB7;
+$accent-color    : #15B293;
+$error-color     : #F21D43;
+$warning-color   : #FFB71F;
+// And an alias for the link color.
+$link-color      : $primary-color;
+
+// Define the text colors for dark text on a light background.
+$black-text-color-1  : rgba(#000000, 0.87);
+$black-text-color-2  : rgba(#000000, 0.54);
+$black-text-color-3  : rgba(#000000, 0.38);
+$black-divider-color : rgba(#000000, 0.12);
+// And the text colors for light text on a dark background.
+$white-text-color-1  : rgba(#FFFFFF, 1.00);
+$white-text-color-2  : rgba(#FFFFFF, 0.70);
+$white-text-color-3  : rgba(#FFFFFF, 0.50);
+$white-divider-color : rgba(#FFFFFF, 0.12);
+
+
+// Apply the primary text color to all elements on the page by default.
+html {
+	color: $black-text-color-1;
+	background-color: #E0E0E0;
+	min-height: 100vh;
+	
+	@at-root {
+		* {
+			color: inherit;
+		}
+
+		// And apply the link color to links.
+		a {
+			color: $link-color;
+		}
+	}
+}
+

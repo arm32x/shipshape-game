@@ -1,0 +1,25 @@
+/// 03. elevation
+/// 		Defines some mixins to deal with Material Design elevation.
+
+@mixin material-elevation($dp, $color: #000000, $suffix: null) {
+    @if $dp < 1 {
+        box-shadow: none $suffix;
+    } @else {
+        $shadow: '0px ';
+        
+        $ambient-y: $dp;
+        $ambient-blur: $dp * 3;
+        $ambient-alpha: ($dp + 5 + ($dp / 9.38)) / 50;
+        
+        $shadow: $shadow + $ambient-y + 'px ' + $ambient-blur + 'px ' + rgba($color, $ambient-alpha) + ', 0px ';
+        
+        $direct-y: if($dp < 10, if($dp % 2 == 0, $dp - $dp / 2, ($dp - (($dp - 1) / 2))), $dp - 4);
+        $direct-blur: $dp * 3;
+        $direct-alpha: (24 - $dp / 15) / 50;
+        
+        $shadow: $shadow + $direct-y + 'px ' + $direct-blur + 'px ' + rgba($color, $ambient-alpha);
+        
+        box-shadow: unquote($shadow) $suffix;
+    }
+}
+

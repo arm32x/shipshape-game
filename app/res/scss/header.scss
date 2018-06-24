@@ -1,0 +1,41 @@
+/// ShipShape -> res -> scss -> header.scss
+/// 	Style the header with fancy colors and stuff.
+
+@import 'colors';
+@import 'elevation';
+@import 'z-index';
+
+
+.shp-header {
+	margin-bottom: -64px;
+	background-color: $primary-color;
+	color: $white-text-color-1;
+
+	.shp-header__row {
+		position: relative;
+		z-index: $z-index-header;
+		box-sizing: border-box;
+		padding: 20px 24px;
+		min-height: 64px;
+
+		&.shp-header__row--logo {
+			position: relative;
+			height: 192px;
+
+			.shp-logo {
+				position: absolute;
+				bottom: 20px;
+				left: 20px;
+
+				@media (min-width: 840px) {
+					left: 48px;
+				}
+			}
+		}
+
+		&.shp-header__row--under {
+			z-index: $z-index-header-under;
+		}
+	}
+}
+

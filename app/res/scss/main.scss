@@ -1,0 +1,12 @@
+/// ShipShape -> res -> scss -> main.scss
+/// 	Import the other SCSS partials to create one main file.  Uses the
+/// 	'node-sass-import-once' importer to import only once.
+
+@import 'colors';
+@import 'typography';
+
+
+body {
+	margin: 0px;
+}
+
