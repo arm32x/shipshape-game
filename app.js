@@ -12,7 +12,7 @@ const path    = require('path');
 let dev = process.env.NODE_ENV != 'production';
 
 // Use Morgan for logging (even in production).
-app.use(morgan(':status :method :url - :response-time ms'));
+app.use(morgan('dev'));
 
 // Configure views and the view engine.
 app.set('view engine', 'ejs');

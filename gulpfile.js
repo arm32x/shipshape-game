@@ -20,7 +20,7 @@ let dev = process.env.NODE_ENV != 'production';
 
 // Build CSS files from SCSS files using the 'node-sass-import-once' importer.
 gulp.task('build-css', () =>
-	gulp.src('res/scss/**/*.scss')
+	gulp.src('app/res/scss/**/*.scss')
 		// If we are in development, initialize the sourcemaps.
 		.pipe(dev ? sourcemaps.init() : noop())
 		// Compile the SCSS.
@@ -47,12 +47,12 @@ gulp.task('build-css', () =>
 		// Write the finished sourcemaps if we are in development.
 		.pipe(dev ? sourcemaps.write('./') : noop())
 		// Output the compiled CSS files.
-		.pipe(gulp.dest('res/dist/'))
+		.pipe(gulp.dest('res/'))
 );
 
 // Transpile JS files using Babel.
 gulp.task('build-js', () =>
-	gulp.src('res/js/**/*.es6.js')
+	gulp.src('app/res/js/**/*.es6.js')
 		// If we are in development, initialize the sourcemaps.
 		.pipe(dev ? sourcemaps.init() : noop())
 		// Transpile the JS using the 'env' preset.
@@ -66,7 +66,7 @@ gulp.task('build-js', () =>
 		// Write the sourcemaps if we are in development.
 		.pipe(dev ? sourcemaps.write('./') : noop())
 		// Output the compiled JS files.
-		.pipe(gulp.dest('res/dist/'))
+		.pipe(gulp.dest('res/'))
 );
 
 // Build both CSS and JS in parallel.
@@ -78,13 +78,12 @@ gulp.task('server', () => {
 	// Create the server from our 'app.js' file.
 	let server = gls.new('app.js');
 	// If the SCSS changes, compile it and notify LiveReload.
-	gulp.watch('res/scss/**/*.scss').on('change', (file) =>
-		gulp.series('build-css', server.notify.bind(server, file)));
+	gulp.watch('app/res/scss/**/*.scss', gulp.task('build-css'));
 	// If the JS changes, compile it and notify LiveReload.
-	gulp.watch('res/js/**/*.es6.js').on('change', (file) =>
-		gulp.series('build-js',  server.notify.bind(server, file)));
-	gulp.watch([ 'app.js', 'app/**/*' ], () => server.start());
-	server.start();
+	gulp.watch('app/res/js/**/*.es6.js', gulp.task('build-js'));
+	// If any other part of the app changes, restart the server.
+	gulp.watch([ 'app.js', 'app/**/*', '!app/res{,/**}' ], gulp.series((done) => { server.stop(); done(); }, 'server'));
+	return server.start();
 });
 
 // Build all files and then start the server (if in development).
