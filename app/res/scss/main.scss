@@ -27,3 +27,12 @@ html {
 	}
 }
 
+.shp-navigation {
+	font-size: 0rem;
+	.shp-navigation__item {
+		font-size: to-rem(14px);
+
+		margin: -6px 16px -6px 0px;
+	}
+}
+

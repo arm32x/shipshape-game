@@ -1,25 +1,61 @@
 /// 03. elevation
 /// 		Defines some mixins to deal with Material Design elevation.
 
-@mixin material-elevation($dp, $color: #000000, $suffix: null) {
+/// Mixin for applying Material Design shadows using special shadow values
+/// 	Credit goes to paulmelnikow on GitHub for adapting the LESS version by
+/// 	Florian Kutschera on Medium.
+///     
+/// 	https://gist.github.com/paulmelnikow/7fcfbe4f68e5df7fe326 (SCSS version)
+/// 	https://medium.com/@Florian/freebie-google-material-design-shadow-helper-2a0501295a2d (LESS version)
+@mixin material-shadow($level) {
+    @if $level == 1 {
+        // Used for buttons, cards, and unscrolled appbars.
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    } @else if $level == 2 {
+        // Used for scrolled appbars.
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    } @else if $level == 3 {
+        // Used for raised buttons and cards.
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+    } @else if $level == 4 {
+        // Used for navigation drawers.
+        box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+    } @else if $level == 5 {
+        // Used for modal dialogs.
+        box-shadow: 0 19px 38px rgba(0, 0, 0, 0.30), 0 15px 12px rgba(0, 0, 0, 0.22);
+    }
+}
+/// Mixin to calculate material design shadows based on an elevation level
+/// instead of a special shadow level
+/// 	Thanks to Troncoso on StackOverflow for the original JavaScript function
+/// 	(I used the second example).  Modified to reference values from the above
+/// 	mixin.
+/// 
+/// 	http://stackoverflow.com/a/34424040
+@mixin material-elevation($dp, $suffix: null) {
     @if $dp < 1 {
         box-shadow: none $suffix;
+    } @else if $dp == 2 {
+        @include material-shadow(1);
+    } @else if $dp == 4 {
+        @include material-shadow(2);
+    } @else if $dp == 8 {
+        @include material-shadow(3);
     } @else {
-        $shadow: '0px ';
+        $shadow: "0px ";
         
         $ambient-y: $dp;
-        $ambient-blur: $dp * 3;
-        $ambient-alpha: ($dp + 5 + ($dp / 9.38)) / 50;
+        $ambient-blur: if($dp == 1, 3, $dp * 2);
+        $ambient-alpha: ($dp + 10 + ($dp / 9.38)) / 100;
         
-        $shadow: $shadow + $ambient-y + 'px ' + $ambient-blur + 'px ' + rgba($color, $ambient-alpha) + ', 0px ';
+        $shadow: $shadow + $ambient-y + "px " + $ambient-blur + "px rgba(0, 0, 0, " + $ambient-alpha + "), 0px ";
         
-        $direct-y: if($dp < 10, if($dp % 2 == 0, $dp - $dp / 2, ($dp - (($dp - 1) / 2))), $dp - 4);
-        $direct-blur: $dp * 3;
-        $direct-alpha: (24 - $dp / 15) / 50;
+        $direct-y: if($dp < 10, if($dp % 2 == 0, $dp - (($dp / 2) - 1), ($dp - (($dp - 1) / 2))), $dp - 4);
+        $direct-blur: if($dp == 1, 3, $dp * 2);
+        $direct-alpha: (24 - round($dp / 10)) / 100;
         
-        $shadow: $shadow + $direct-y + 'px ' + $direct-blur + 'px ' + rgba($color, $ambient-alpha);
+        $shadow: $shadow + $direct-y + "px " + $direct-blur + "px rgba(0, 0, 0, " + $direct-alpha + ")";
         
         box-shadow: unquote($shadow) $suffix;
     }
 }
-

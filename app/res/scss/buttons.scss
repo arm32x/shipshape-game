@@ -1,0 +1,85 @@
+/// ShipShape -> res -> scss -> buttons.scss
+/// 	Style Material Design buttons.
+
+@import 'colors';
+@import 'elevation';
+@import 'typography';
+
+
+.shp-button {
+	box-sizing: border-box;
+	display: inline-block;
+	position: relative;
+	min-width: 64px;
+	height: 36px;
+	padding: 0px 24px;
+
+	color: $accent-color;
+	border-radius: 18px;
+	outline: none;
+	
+	font-size: to-rem(14px);
+	line-height: 36px;
+	font-weight: bold;
+	text-decoration: none;
+	text-transform: uppercase;
+
+	cursor: pointer;
+	transition: background-color 150ms ease;
+	
+	&:hover {
+		background-color: rgba($accent-color, 0.20);
+		&.shp-button--light {
+			background-color: rgba($white-text-color-1, 0.20);
+		}
+	}
+
+	&.shp-button--light {
+		color: $white-text-color-1;
+	}
+
+	&.shp-button--with-icon {
+		padding-left: 56px;
+
+		.shp-button__icon {
+			position: absolute;
+			top: 6px;
+			left: 24px;
+			width: 24px;
+			height: 24px;
+			color: inherit;
+			font-size: 24px;	
+		}
+	}
+
+
+	&.shp-button--outlined {
+		box-shadow: inset 0px 0px 0px 1px $black-divider-color;
+		&.shp-button--light {
+			box-shadow: inset 0px 0px 0px 1px $white-divider-color;
+		}
+	}
+
+	&.shp-button--contained {
+		background-color: $accent-color;
+		color: $white-text-color-1;
+		&:hover, &:focus {
+			background-color: mix(rgba($white-text-color-1, 1.00), $accent-color, 20%);
+		}
+		&.shp-button--light {
+			color: $black-text-color-1;
+			&:hover, &:focus {
+				background-color: mix(rgba($black-text-color-1, 1.00), $accent-color, 20%);
+			}
+		}
+
+		&.shp-button--raised {
+			@include material-elevation(2);
+			&:hover {
+				@include material-elevation(8);
+			}
+			transition: background-color 150ms ease, box-shadow 150ms ease;
+		}
+	}
+}
+

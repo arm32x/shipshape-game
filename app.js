@@ -25,9 +25,9 @@ app.set('view options', {
 	delimiter: '$'
 });
 
-// Enable livereload support in development.
-if (dev) app.use(require('connect-livereload')());
-
+// Attach helpers for EJS views.
+app.locals.helpers = require('./app/ejs-helpers.js');
+app.locals.require = require;
 
 // Connect routers.
 for (let index = 0; index < Object.keys(routers).length; index++) {

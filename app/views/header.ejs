@@ -13,6 +13,10 @@
 
 		<$# Include some fonts from Google Fonts.                            $>
 		<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Lobster+Two:400,700|Space+Mono|Work+Sans:400,600' />
+		<link rel='stylesheet' href='https://fonts.googleapis.com/icon?family=Material+Icons' />
+		
+		<$# include rippleJS for the Material Design ripple effect.          $>
+		<script src='https://cdn.rawgit.com/samthor/rippleJS/v1.0.2/ripple.min.js' async></script>
 
 		<$# Include CSS and JS.                                              $>
 		<link rel='stylesheet' href='/res/index.css' />
@@ -27,7 +31,8 @@
 			</div>
 			<div class='shp-header__row shp-header__row--navigation'>
 				<nav class='shp-navigation shp-navigation--horizontal'>
-
+					<$- helpers.navigationLink("Play online", '/play', { type: 'contained', icon: 'play_arrow' }); $>
+					<$- helpers.navigationLink("Maps", '/', { type: 'outlined', light: true, icon: 'map' }); $>
 				</nav>
 			</div>
 			<div class='shp-header__row shp-header__row--under'></div>
