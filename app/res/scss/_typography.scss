@@ -14,12 +14,22 @@ $logo-text-fonts : 'Lobster Two', $monospace-fonts;
 	@return ($value / 16px) * 1rem;
 }
 
+// Disable margin for the first and last children.
+@mixin first-and-last-child-no-margin() {
+	&:first-child {
+		margin-top: 0em;
+	}
+	&:last-child {
+		margin-bottom: 0em;
+	}
+}
 
 // Apply the fonts to various elements on the website, and add margins to them.
 
 html {
 	font: 100% $body-text-fonts;
 	line-height: 1.15em;
+	letter-spacing: 0.0175px;
 
 	@at-root body {
 		font-size: to-rem(14px);
@@ -33,6 +43,14 @@ html {
 
 	&.shp-logo--small {
 		font-size: to-rem(24px);
+	}
+}
+
+p {
+	margin: 0em 0.5em;
+
+	.shp-card & {
+		@include first-and-last-child-no-margin();
 	}
 }
 

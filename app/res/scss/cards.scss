@@ -1,0 +1,19 @@
+/// ShipShape -> res -> scss -> cards.scss
+/// 	Style cards.
+
+@import 'colors';
+@import 'elevation';
+
+
+.shp-card {
+	@include material-elevation(2);
+
+	background-color: #FFFFFF;
+	padding: 16px;
+
+	margin-bottom: 16px;
+	&:last-child {
+		margin-bottom: 0px;
+	}
+}
+
