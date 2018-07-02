@@ -3,7 +3,6 @@
 /// 	development.
 
 const gulp         = require('gulp');
-const gls          = require('gulp-live-server');
 
 const sass         = require('gulp-sass');
 const autoprefixer = require('gulp-autoprefixer');
@@ -72,20 +71,14 @@ gulp.task('build-js', () =>
 // Build both CSS and JS in parallel.
 gulp.task('build', gulp.parallel('build-css', 'build-js'));
 
-
-// Run the server with LiveReload (if in development).
-gulp.task('server', () => {
-	// Create the server from our 'app.js' file.
-	let server = gls.new('app.js');
+// Watch resource files and compile them if changed.
+gulp.task('watch', () => {
 	// If the SCSS changes, compile it.
 	gulp.watch('app/res/scss/**/*.scss', gulp.task('build-css'));
 	// If the JS changes, compile it.
-	gulp.watch('app/res/js/**/*.es6.js', gulp.task('build-js'));
-	// If any other part of the app changes, restart the server.
-	gulp.watch([ 'app.js', 'app/**/*', '!app/res{,/**}' ], gulp.series((done) => { server.stop(); done(); }, 'server'));
-	return server.start();
+	gulp.watch('app/res/js/**/*.js',     gulp.task('build-js'));
 });
 
 // Build all files and then start the server (if in development).
-gulp.task('default', gulp.series('build', dev ? 'server' : undefined));
+gulp.task('default', gulp.series('build', dev ? 'watch' : undefined));
 
