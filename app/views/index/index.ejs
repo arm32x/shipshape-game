@@ -1,9 +1,19 @@
 <$- include('../header', { title: "Home" }); $>
 
-<$ for (let index = 0; index < 32; index++) { $>
-	<div class='shp-card'>
-		<p>Hello, world!  This is a test for header scrolling.</p>
-	</div>
-<$ } $>
+<div class='shp-maps shp-card'>
+	<$ for (let category = 1; category <= 8; category++) { $>
+		<section class='shp-map-category'>
+			<h2 class='shp-map-category__name'>Test Category <$= category $></h2>
+			<div class='shp-map-category__maps'>
+				<$ for (let map = 1; map <= 8; map++) { $>
+					<div class='shp-map'>
+						<div class='shp-map__image'></div>
+						<h4 class='shp-map__name'>Test Map <$= (category - 1) * 8 + map $></h4>
+					</div>
+				<$ } $>
+			</div>
+		</section>
+	<$ } $>
+</div>
 
 <$- include('../footer'); $>
