@@ -7,6 +7,12 @@ module.exports = {
 		function index(req, res, next) {
 			res.render('index/index');
 		}
+	],
+
+	test: [
+		function test(req, res, next) {
+			res.render('index/text');
+		}
 	]
 
 };
