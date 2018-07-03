@@ -1,4 +1,4 @@
-/// ShipShape -> ejs-helpers
+/// ShipShape  >  ejs-helpers
 /// 	Some helpers for use in EJS templates.
 
 const HTMLTag = require('html-tag');

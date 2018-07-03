@@ -1,4 +1,4 @@
-/// ShipShape -> app.js
+/// ShipShape  >  app
 /// 	The main app entry point.  Links up all the other stuff.
 
 const express = require('express');

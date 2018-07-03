@@ -1,6 +1,6 @@
-/// ShipShape -> res -> scss -> main.scss
-/// 	Import the other SCSS partials to create one main file.  Uses the
-/// 	'node-sass-import-once' importer to import only once.
+/// ShipShape  >  scss  >  main
+/// 	Styles parts of the webpage that are either not part of a specific
+/// 	component or that are part of a very small component.
 
 @import 'colors';
 @import 'typography';

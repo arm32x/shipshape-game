@@ -1,4 +1,4 @@
-/// ShipShape -> controllers -> index.js
+/// ShipShape  >  controllers  >  index
 /// 	Handle routes for miscellaneous pages throughout the app.
 
 module.exports = {
