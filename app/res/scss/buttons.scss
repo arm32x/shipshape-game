@@ -25,6 +25,7 @@
 	text-transform: uppercase;
 
 	cursor: pointer;
+	-webkit-tap-highlight-color: transparent;
 	transition: background-color 150ms ease;
 	
 	&:hover {
