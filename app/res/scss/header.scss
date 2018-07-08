@@ -14,6 +14,7 @@
 		repeat: repeat;
 	};
 	color: $white-text-color-1;
+	user-select: none;
 
 	.shp-header__row {
 		position: relative;
@@ -35,6 +36,11 @@
 				left: 20px;
 				@media (min-width: 840px) {
 					left: 48px;
+				}
+				user-select: none;
+				&::selection {
+					color: inherit;
+					background-color: inherit;
 				}
 			}
 		}

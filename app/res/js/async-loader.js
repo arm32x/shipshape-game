@@ -32,11 +32,28 @@ function handleEvent(e, element) {
 }
 
 /// Asynchronously loads a page from a url and injects it into the DOM.
+let animI; let animO;
 function loadPage(url) {
 	// Initialize an HTTP request.
 	let xhr = new XMLHttpRequest();
 	// Tell it that we expect an HTML document back.
 	xhr.responseType = 'document';
+	/// Replace the page content and finish the loading animation.
+	function replacePage(contentA, contentB) {
+		// Replace the old page content with the new page content.
+		contentB.innerHTML = contentA.innerHTML;
+		// Finish the loading animation (display the end part) and make sure no
+		// other animations are playing.
+		if (animI != undefined) animI.pause();
+		if (animO != undefined) animO.pause();
+		animI = anime({
+			targets    : '#shp-content',
+			translateY : 0,
+			opacity    : 1.00,
+			easing     : [ 0.0, 0.0, 0.2, 1.0 ],
+			duration   : 250
+		});
+	}
 	// Add a listener to track the request.
 	xhr.addEventListener('readystatechange', (e) => {
 		// Check if the response has arrived yet.
@@ -53,14 +70,20 @@ function loadPage(url) {
 				if (contentB == null) valid = false;
 				// Check if the preceding tests passed.
 				if (valid) {
-					// Replace the old page content with the new page content.
-					contentB.innerHTML = contentA.innerHTML;
+					// Is the animation completed?
+					if (animO.completed) {
+						replacePage(contentA, contentB);
+					} else {
+						// Wait for the animation to complete.
+						animO.complete = () => {
+							replacePage(contentA, contentB);
+						};
+					}
 				} else {
 					// If the response is invalid, try to load it normally in
 					// the browser.
 					window.location.reload();
 				}
-				return;
 			}
 			return;
 		}
@@ -68,6 +91,17 @@ function loadPage(url) {
 		if (xhr.readyState == 1) {
 			// Add the requested url to the browser history.
 			window.history.pushState(undefined, "", url);
+			// Start the loading animation and make sure no other animations
+			// are playing.
+			if (animI != undefined) animI.pause();
+			if (animO != undefined) animO.pause();
+			animO = anime({
+				targets    : '#shp-content',
+				translateY : 16,
+				opacity    : 0.00,
+				easing     : [ 0.4, 0.0, 1.0, 1.0 ],
+				duration   : 200
+			});
 			return;
 		}
 	});

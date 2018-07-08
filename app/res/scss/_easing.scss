@@ -1,0 +1,8 @@
+/// ShipShape  >  scss  >  easing
+/// 	Defines Material Design easing curves for use in transitions.
+
+
+$standard   : cubic-bezier(0.4, 0.0, 0.2, 1.0);
+$decelerate : cubic-bezier(0.0, 0.0, 0.2, 1.0);
+$accelerate : cubic-bezier(0.4, 0.0, 1.0, 1.0);
+

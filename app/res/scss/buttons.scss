@@ -2,6 +2,7 @@
 /// 	Style Material Design buttons.
 
 @import 'colors';
+@import 'easing';
 @import 'elevation';
 @import 'typography';
 
@@ -25,7 +26,13 @@
 
 	cursor: pointer;
 	-webkit-tap-highlight-color: transparent;
-	transition: background-color 150ms ease;
+	transition: background-color 150ms $standard;
+
+	user-select: none;
+	&::selection {
+		color: inherit;
+		background-color: inherit;
+	}
 	
 	color: $accent-color;
 	&:hover {
@@ -78,7 +85,7 @@
 			&:hover {
 				@include material-elevation(8);
 			}
-			transition: background-color 150ms ease, box-shadow 150ms ease;
+			transition: background-color 150ms $standard, box-shadow 150ms $standard;
 		}
 	}
 }
