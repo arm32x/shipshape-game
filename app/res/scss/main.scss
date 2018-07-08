@@ -13,7 +13,6 @@ html {
 		repeat: repeat;
 	};
 	min-height: 100vh;
-
 	body {
 		margin: 0px;
 	}
@@ -21,7 +20,6 @@ html {
 
 .shp-content {
 	margin: 0px 24px 24px;
-
 	@media (min-width: 840px) {
 		margin: 0px 48px 24px;
 	}
@@ -29,10 +27,10 @@ html {
 
 .shp-navigation {
 	font-size: 0rem;
+	margin: -10px 0px;
 	.shp-navigation__item {
 		font-size: to-rem(14px);
-
-		margin: -6px 16px -6px 0px;
+		margin: 4px 16px 4px 0px;
 	}
 }
 
