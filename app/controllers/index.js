@@ -11,7 +11,7 @@ module.exports = {
 
 	test: [
 		function test(req, res, next) {
-			res.render('index/text');
+			res.render('index/test');
 		}
 	]
 

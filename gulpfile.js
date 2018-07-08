@@ -51,7 +51,7 @@ gulp.task('build-css', () =>
 
 // Transpile JS files using Babel.
 gulp.task('build-js', () =>
-	gulp.src('app/res/js/**/*.es6.js')
+	gulp.src('app/res/js/**/*.js')
 		// If we are in development, initialize the sourcemaps.
 		.pipe(dev ? sourcemaps.init() : noop())
 		// Transpile the JS using the 'env' preset.
