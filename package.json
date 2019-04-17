@@ -45,7 +45,6 @@
   },
   "browserslist": [
     ">0.5%",
-    "Chrome 49",
     "last 3 versions"
   ]
 }
