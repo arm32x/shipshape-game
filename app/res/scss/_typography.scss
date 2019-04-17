@@ -5,7 +5,7 @@
 // Declare some font stacks for use in the website.
 $body-text-fonts : 'Work Sans', 'IBM Plex Sans', 'Trebuchet MS', 'Arial', sans-serif;
 $monospace-fonts : 'Space Mono', 'IBM Plex Mono', 'Cousine', 'Courier New', monospace;
-$logo-text-fonts : 'Lobster Two', $monospace-fonts;
+$logo-text-fonts : 'Lobster Two', 'Lobster', $monospace-fonts;
 
 
 // Convert from any unit to rem.  This should only be used for font sizes and
@@ -54,3 +54,6 @@ p {
 	}
 }
 
+code {
+	font-family: $monospace-fonts;
+}

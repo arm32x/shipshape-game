@@ -10,8 +10,8 @@ function handleEvent(e, element) {
 	if (element == undefined) {
 		element = e.target;
 	}
-	// Check if the current element is a link.
-	if (element.nodeName == 'A') {
+	// Check if the current element is a link without 'data-noasync'.
+	if (element.nodeName == 'A' && element.getAttribute('data-noasync') == undefined) {
 		// If is is, continue validation checks.
 		if (!element.hasAttribute('href')) return;
 		if (!element.href.startsWith(window.location.protocol + '//' + window.location.host)) return;
@@ -51,7 +51,7 @@ function loadPage(url) {
 			translateY : 0,
 			opacity    : 1.00,
 			easing     : [ 0.0, 0.0, 0.2, 1.0 ],
-			duration   : 250
+			duration   : 200
 		});
 	}
 	// Add a listener to track the request.
@@ -100,7 +100,7 @@ function loadPage(url) {
 				translateY : 16,
 				opacity    : 0.00,
 				easing     : [ 0.4, 0.0, 1.0, 1.0 ],
-				duration   : 200
+				duration   : 150
 			});
 			return;
 		}

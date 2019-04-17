@@ -6,9 +6,16 @@
 <div class='shp-card'>
 	<p>
 		This is a test page for the asynchronous page loader.
-	</p>
-	<p>
-		The transition between this page and other pages should be smooth.
+	</p><p>
+		The transition between this page and other pages should be smooth when
+		the async loader is enabled.
+	</p><p>
+		If the async loader is disabled (if the link has the
+		<code>data-noasync</code> attribute), it should exhibit normal browser
+		loading behavior.
+	</p><p>
+		<a href='/' data-noasync>This</a> is a synchronous link to the main
+		page, so the async loader should be disabled.
 	</p>
 </div>
 

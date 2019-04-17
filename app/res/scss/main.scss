@@ -23,6 +23,9 @@ html {
 	@media (min-width: 840px) {
 		margin: 0px 48px 24px;
 	}
+	@media (max-width: 360px) {
+		margin: 0px 0px 24px;
+	}
 }
 
 .shp-navigation {
