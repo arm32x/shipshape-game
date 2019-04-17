@@ -1,6 +1,5 @@
 /// ShipShape -> gulpfile.js
-/// 	Handles compilation of assets and launching of the Express server for
-/// 	development.
+/// 	Handles compilation of assets and watching files for recompilation.
 
 const gulp         = require('gulp');
 
@@ -79,6 +78,6 @@ gulp.task('watch', () => {
 	gulp.watch('app/res/js/**/*.js',     gulp.task('build-js'));
 });
 
-// Build all files and then start the server (if in development).
+// Build all files and then start watching files (if in development).
 gulp.task('default', gulp.series('build', dev ? 'watch' : undefined));
 
