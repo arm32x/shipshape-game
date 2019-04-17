@@ -40,8 +40,7 @@
     "gulp-sourcemaps": "^2.6.4"
   },
   "scripts": {
-    "start": "env NODE_ENV=production bash -c 'node app.js &; P1=$!; gulp &; P2=$!; wait $P1 $P2'",
-    "start-dev": "env NODE_ENV=development bash -c 'nodemon app.js --watch app.js --watch app/ --ignore app/res/ & P1=$!; gulp & P2=$!; wait $P1 $P2'"
+    "start": "./server.sh"
   },
   "browserslist": [
     ">0.5%",
