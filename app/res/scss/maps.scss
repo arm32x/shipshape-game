@@ -5,11 +5,6 @@
 
 
 .shp-map-category {
-	.shp-map-category__name {
-		font: bold to-rem(32px) $logo-text-fonts;
-		margin: 32px 0px 16px;
-	}
-
 	.shp-map-category__maps {
 		display: flex;
 		flex-flow: row wrap;

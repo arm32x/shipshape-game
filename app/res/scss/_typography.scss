@@ -57,3 +57,14 @@ p {
 code {
 	font-family: $monospace-fonts;
 }
+
+
+h1 {
+	font: to-rem(40px) $logo-text-fonts;
+	margin: 32px 0px 16px;
+}
+
+h2 {
+	font: bold to-rem(32px) $logo-text-fonts;
+	margin: 32px 0px 16px;
+}

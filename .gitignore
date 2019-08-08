@@ -1,3 +1,4 @@
 node_modules/
 res/index.*
 .*.s??
+*.sublime-workspace

@@ -14,11 +14,14 @@
 	min-width: 64px;
 	height: 36px;
 	padding: 0px 24px;
-
+	
+	background-color: transparent;
+	
+	border: none;
 	border-radius: 18px;
 	outline: none;
 	
-	font-size: to-rem(14px);
+	font: to-rem(14px) $body-text-fonts;
 	line-height: 36px;
 	font-weight: bold;
 	text-decoration: none;
@@ -42,6 +45,12 @@
 		color: $white-text-color-1;
 		&:hover {
 			background-color: rgba($white-text-color-1, 0.20);
+		}
+	}
+	&.shp-button--dark {
+		color: $black-text-color-1;
+		&:hover {
+			background-color: rgba($black-text-color-1, 0.20);
 		}
 	}
 
@@ -83,7 +92,7 @@
 		&.shp-button--raised {
 			@include material-elevation(2);
 			&:hover {
-				@include material-elevation(8);
+				@include material-elevation(4);
 			}
 			transition: background-color 150ms $standard, box-shadow 150ms $standard;
 		}

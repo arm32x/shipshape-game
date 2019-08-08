@@ -4,13 +4,13 @@
 module.exports = {
 	
 	index: [
-		function index(req, res, next) {
+		function index_index(req, res, next) {
 			res.render('index/index');
 		}
 	],
 
 	test: [
-		function test(req, res, next) {
+		function index_test(req, res, next) {
 			res.render('index/test');
 		}
 	]

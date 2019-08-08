@@ -1,0 +1,27 @@
+/// ShipShape  >  scss  >  compat
+/// 	Overrides styles of other libraries to be more compatible with the app’s
+///     styles.
+
+.shp-select {
+	box-sizing: border-box;
+	
+	.select-wrapper input.select-dropdown {
+		margin: 0px;
+		transition-property: box-shadow;
+		&:not(:focus) {
+			padding-bottom: 1px;
+			border-bottom-width: 1px;
+		}
+		&:focus {
+			border-bottom-width: 2px;
+		}
+	}
+}
+
+.shp-card .mdl-grid {
+	margin: -16px;
+}
+
+.mdl-cell.input-field {
+	margin-bottom: 8px;
+}

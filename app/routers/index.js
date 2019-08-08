@@ -9,6 +9,7 @@ const controller = require('../controllers/index.js');
 
 
 router.get('/', controller.index);
+router.get('/maps', controller.index);
 
 router.get('/test', controller.test);
 

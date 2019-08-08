@@ -3,17 +3,72 @@
 
 @import 'colors';
 @import 'elevation';
+@import 'typography';
 
 
 .shp-card {
 	@include material-elevation(2);
 
 	background-color: #FFFFFF;
+	
 	padding: 16px;
-
 	margin-bottom: 16px;
 	&:last-child {
 		margin-bottom: 0px;
+	}
+	
+	.shp-card__header {
+		display: block;
+		box-sizing: border-box;
+		height: 40px;
+		
+		font-size: 0px;
+		
+		padding: 8px;
+		margin: -16px -16px 16px -16px;
+		
+		&.shp-card__header--outlined {
+			padding-bottom: 7px;
+		
+			border-bottom: 1px solid $black-divider-color;
+		}
+	}
+	
+	.shp-card__footer {
+		display: block;
+		box-sizing: border-box;
+		
+		font-size: 0px;
+		text-align: right;
+		
+		padding: 4px 16px;
+		margin: 16px -16px -16px -16px;
+		
+		&.shp-card__footer--outlined {
+			padding-top: 3px;
+		
+			border-top: 1px solid $black-divider-color;
+		}
+		
+		.shp-button {
+			margin: 4px 0px 4px 16px;
+		}
+	}
+	
+	.shp-card__icon {
+		margin-right: 8px;
+	}
+	
+	.shp-card__title {
+		display: inline-block;
+		vertical-align: 25%;
+		
+		height: 24px;
+		
+		font: bold to-rem(16px) $body-text-fonts;
+		line-height: 24px;
+		
+		margin: 0px;
 	}
 }
 

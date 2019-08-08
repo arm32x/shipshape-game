@@ -8,7 +8,8 @@ const morgan  = require('morgan');
 const path    = require('path');
 
 const routers = {
-	index : [ '/', require('./app/routers/index.js') ],
+	index : [ '/',     require('./app/routers/index.js') ],
+	game  : [ '/game', require('./app/routers/game.js')  ]
 };
 
 
@@ -39,6 +40,6 @@ for (let index = 0; index < Object.keys(routers).length; index++) {
 // Serve resource files that have been processed.
 app.use('/res', express.static(path.join(__dirname, 'res')));
 
-// Listen on port 3000, or what is specified in the PORT environment variable.
-app.listen(process.env.PORT || 3000);
+// Listen on port 8080, or what is specified in the PORT environment variable.
+app.listen(process.env.PORT || 8080);
 

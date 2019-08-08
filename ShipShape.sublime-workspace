@@ -5,9 +5,6 @@
 		[
 		]
 	},
-	"buffers":
-	[
-	],
 	"build_system": "",
 	"build_system_choices":
 	[
@@ -70,13 +67,18 @@
 		"side_bar_visible": false,
 		"status_bar_visible": false
 	},
-	"expanded_folders":
-	[
-		"/I/Projects/Games/ShipShape"
-	],
 	"file_history":
 	[
+		"/I/Projects/Games/ShipShape/.gitignore",
 		"/C/Users/ARM32/AppData/Roaming/Sublime Text 3/Packages/Tomorrow Night Italics Color Scheme/Tomorrow-Night-Italics.tmTheme",
+		"/I/Projects/Games/ShipShape/server.sh",
+		"/I/Projects/Games/ShipShape/app/routers/index.js",
+		"/I/Projects/Games/ShipShape/app/controllers/index.js",
+		"/I/Projects/Games/ShipShape/package.json",
+		"/I/Projects/Games/ShipShape/app/views/index/test.ejs",
+		"/I/Projects/Games/ShipShape/app/res/js/async-loader.js",
+		"/I/Projects/Games/ShipShape/app/res/scss/main.scss",
+		"/I/Projects/Games/ShipShape/app/res/scss/_typography.scss",
 		"/C/Users/ARM32/AppData/Roaming/Sublime Text 3/Packages/User/Preferences.sublime-settings",
 		"/C/Users/ARM32/AppData/Roaming/Sublime Text 3/Packages/Default/Preferences.sublime-settings",
 		"/C/Users/ARM32/Documents/testy.html"
@@ -113,21 +115,13 @@
 		"whole_word": false,
 		"wrap": true
 	},
-	"groups":
-	[
-		{
-			"sheets":
-			[
-			]
-		}
-	],
 	"incremental_find":
 	{
 		"height": 26.0
 	},
 	"input":
 	{
-		"height": 0.0
+		"height": 39.0
 	},
 	"layout":
 	{
@@ -157,7 +151,6 @@
 		"height": 0.0
 	},
 	"pinned_build_system": "",
-	"project": "ShipShape.sublime-project",
 	"replace":
 	{
 		"height": 48.0
@@ -190,7 +183,6 @@
 		],
 		"width": 0.0
 	},
-	"selected_group": 0,
 	"settings":
 	{
 	},

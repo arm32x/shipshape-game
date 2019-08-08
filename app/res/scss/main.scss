@@ -5,8 +5,15 @@
 @import 'colors';
 @import 'typography';
 
+// Import MaterializeCSS.
+$secondary-color: $accent-color;
+$success-color: $accent-color;
+$dropdown-color: $black-text-color-1;
+@import 'materialize/materialize';
+
 
 html {
+	box-sizing: content-box;
 	background: {
 		color: #E0E0E0;
 		image: url('/res/images/background.png');
@@ -30,9 +37,12 @@ html {
 
 .shp-navigation {
 	font-size: 0rem;
+	
 	margin: -10px 0px;
+	
 	.shp-navigation__item {
 		font-size: to-rem(14px);
+		
 		margin: 4px 16px 4px 0px;
 	}
 }

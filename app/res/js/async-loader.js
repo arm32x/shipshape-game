@@ -3,6 +3,9 @@
 /// 	replace the current page using CSS transitions and animations.
 
 
+/// Determines whether or not to enable the async loader.
+const ASYNC_LOADER_ENABLED = false;
+
 /// Handles a click event on any element and triggers the async loader on
 /// links.
 function handleEvent(e, element) {
@@ -111,5 +114,5 @@ function loadPage(url) {
 	xhr.send();
 }
 
-document.addEventListener('click', handleEvent);
-
+// Enables the async loader.
+if (ASYNC_LOADER_ENABLED) document.addEventListener('click', handleEvent);

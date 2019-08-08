@@ -1,0 +1,37 @@
+<$# ShipShape  >  views  >  game  >  new                                      $>
+<$#     Starts a new game and provides options for gameplay.                  $>
+
+<$- include('../header', { title: "New Game" }); $>
+
+<div class='shp-card'>
+	<header class='shp-card__header shp-card__header--outlined'>
+		<i class='shp-card__icon material-icons'>settings</i>
+		<span class='shp-card__title'>Game Options</span>
+	</header>
+	<main class='mdl-grid'>
+		<div class='mdl-cell mdl-cell--4-col shp-game-options__input shp-select input-field'>
+			<select id='shp-game-new__multiplayer-mode-select'>
+				<optgroup label="Offline">
+					<option value='versus-cpu'>Versus CPU</option>
+					<option value='pass-and-play' selected>Pass and Play</option>
+				</optgroup>
+			</select>
+			<label>Multiplayer mode</label>
+		</div>
+		<aside class='mdl-cell mdl-cell--4-col mdl-cell--8-col-desktop'>
+			<p>
+				The <b>multiplayer mode</b> determines if the game is
+				multiplayer and, if so, how other players join the game.
+			</p>
+			<p id='shp-game-new__multiplayer-mode-description'>
+				
+			</p>
+		</aside>
+	</main>
+	<footer class='shp-card__footer shp-card__footer--outlined'>
+		<$- helpers.button("Cancel", { type: 'outlined', dark: true, icon: 'cancel', attributes: { id: 'shp-game-new__cancel-button' } }); $>
+		<$- helpers.button("Start game", { type: 'contained', raised: true, icon: 'play_arrow' }); $>
+	</footer>
+</div>
+
+<$- include('../footer'); $>

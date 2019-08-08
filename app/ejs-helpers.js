@@ -5,7 +5,7 @@ const HTMLTag = require('html-tag');
 
 
 module.exports = {
-	button(text, { element = 'button', type = 'text', raised = false, light = false, icon = null, classes = [ ], attributes = { } } = { }) {
+	button(text, { element = 'button', type = 'text', raised = false, light = false, dark = false, icon = null, classes = [ ], attributes = { } } = { }) {
 		return HTMLTag(
 			element, {
 				...attributes,
@@ -14,6 +14,7 @@ module.exports = {
 					type != 'text' ? 'shp-button--' + type : '',
 					raised ? 'shp-button--raised' : '',
 					light ? 'shp-button--light' : '',
+					dark ? 'shp-button--dark' : '',
 					icon != null ? 'shp-button--with-icon' : '',
 				].concat(classes).join(' ').replace(/\s+/g, ' ').trim()
 			}, [
