@@ -9,6 +9,7 @@
 $secondary-color: $accent-color;
 $success-color: $accent-color;
 $dropdown-color: $black-text-color-1;
+$font-stack: $body-text-fonts;
 @import 'materialize/materialize';
 
 
@@ -36,14 +37,35 @@ html {
 }
 
 .shp-navigation {
-	font-size: 0rem;
-	
 	margin: -10px 0px;
-	
-	.shp-navigation__item {
-		font-size: to-rem(14px);
-		
-		margin: 4px 16px 4px 0px;
-	}
 }
 
+.shp-game-new__multiplayer-mode-description {
+	margin-bottom: 0px;
+}
+
+#shp-game-new__map-id-input {
+	position: relative;
+	z-index: 1;
+}
+
+#shp-game-new__map-id-persistent-placeholder {
+	display: inline-block;
+	position: absolute;
+	top: 12px;
+	left: 0px;
+	z-index: 0;
+	
+	font: 16px $monospace-fonts;
+	color: #9E9E9E;
+}
+
+.shp--body-text-fonts {
+	font-family: $body-text-fonts;
+}
+.shp--monospace-fonts {
+	font-family: $monospace-fonts;
+}
+.shp--logo-text-fonts {
+	font-family: $logo-text-fonts;
+}

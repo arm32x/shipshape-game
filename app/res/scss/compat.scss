@@ -2,19 +2,15 @@
 /// 	Overrides styles of other libraries to be more compatible with the app’s
 ///     styles.
 
+@import 'colors';
+
 .shp-select {
 	box-sizing: border-box;
 	
-	.select-wrapper input.select-dropdown {
-		margin: 0px;
-		transition-property: box-shadow;
-		&:not(:focus) {
-			padding-bottom: 1px;
-			border-bottom-width: 1px;
-		}
-		&:focus {
-			border-bottom-width: 2px;
-		}
+	-webkit-tap-highlight-color: transparent;
+	
+	.select-wrapper input.select-dropdown:focus {
+		box-shadow: 0px 1px 0px 0px $accent-color;
 	}
 }
 
@@ -25,3 +21,14 @@
 .mdl-cell.input-field {
 	margin-bottom: 8px;
 }
+
+.input-field {
+	input::placeholder {
+		color: #9E9E9E;
+	}
+	
+	> label {
+		color: #9E9E9E;
+	}
+}
+

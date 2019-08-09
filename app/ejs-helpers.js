@@ -28,7 +28,7 @@ module.exports = {
 		return this.button(text, Object.assign(buttonOptions, {
 			element: 'a',
 			attributes: { href },
-			classes: [ 'shp-navigation__item' ]
+			classes: [ 'shp-navigation__item' ].concat(buttonOptions.classes).join(' ').replace(/\s+/g, ' ').trim()
 		}));
 	}
 };

@@ -4,6 +4,10 @@
 <$- include('../header', { title: "Home" }); $>
 
 <div class='shp-maps shp-card'>
+	<header class='shp-card__header shp-card__header--outlined'>
+		<i class='shp-card__icon material-icons'>map</i>
+		<span class='shp-card__title'>Maps</span>
+	</header>
 	<$ for (let category = 1; category <= 8; category++) { $>
 		<section class='shp-map-category'>
 			<h2 class='shp-map-category__name'>Test Category <$= category $></h2>

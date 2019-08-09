@@ -5,15 +5,37 @@
 
 <div class='shp-card'>
 	<header class='shp-card__header shp-card__header--outlined'>
+		<i class='shp-card__icon material-icons'>map</i>
+		<span class='shp-card__title'>Map selection</span>
+	</header>
+	<main class='mdl-grid'>
+		<div class='mdl-cell mdl-cell--4-col input-field'>
+			<span id='shp-game-new__map-id-persistent-placeholder'>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;&nbsp;</span>
+			<input type='text' placeholder="XXXX XXXX" id='shp-game-new__map-id-input' class='shp--monospace-fonts' style='text-transform: uppercase;' autocomplete='off' autocorrect='off' autocapitalize='off' spellcheck='false' />
+			<label>Map ID</label>
+		</div>
+		<aside class='mdl-cell mdl-cell--4-col mdl-cell--8-col-desktop'>
+			<p>
+				The <b>map ID</b> determines which map this game will be played
+				on.  Different maps have different sizes, ships, and targeting
+				systems.
+			</p>
+		</aside>
+	</main>
+</div>
+
+<div class='shp-card'>
+	<header class='shp-card__header shp-card__header--outlined'>
 		<i class='shp-card__icon material-icons'>settings</i>
-		<span class='shp-card__title'>Game Options</span>
+		<span class='shp-card__title'>Game options</span>
 	</header>
 	<main class='mdl-grid'>
 		<div class='mdl-cell mdl-cell--4-col shp-game-options__input shp-select input-field'>
 			<select id='shp-game-new__multiplayer-mode-select'>
 				<optgroup label="Offline">
-					<option value='versus-cpu'>Versus CPU</option>
 					<option value='pass-and-play' selected>Pass and Play</option>
+					<option value='testing'>Test Mode</option>
+					<option value='testing-2'>Test Mode 2</option>
 				</optgroup>
 			</select>
 			<label>Multiplayer mode</label>
@@ -21,16 +43,26 @@
 		<aside class='mdl-cell mdl-cell--4-col mdl-cell--8-col-desktop'>
 			<p>
 				The <b>multiplayer mode</b> determines if the game is
-				multiplayer and, if so, how other players join the game.
+				multiplayer and, if so, how other players join and play the
+				game.
 			</p>
-			<p id='shp-game-new__multiplayer-mode-description'>
-				
+			<p class='shp-game-new__multiplayer-mode-description' data-multiplayer-mode='pass-and-play'>
+				In <b>pass and play</b>, a single device is passed between
+				multiple players during gameplay.
+			</p>
+			<p class='shp-game-new__multiplayer-mode-description' data-multiplayer-mode='testing'>
+				Testing.  This mode should not exist in the final game.
+			</p>
+			<p class='shp-game-new__multiplayer-mode-description' data-multiplayer-mode='testing-2'>
+				Testing 2.  This mode should not exist in the final game.
 			</p>
 		</aside>
 	</main>
 	<footer class='shp-card__footer shp-card__footer--outlined'>
-		<$- helpers.button("Cancel", { type: 'outlined', dark: true, icon: 'cancel', attributes: { id: 'shp-game-new__cancel-button' } }); $>
-		<$- helpers.button("Start game", { type: 'contained', raised: true, icon: 'play_arrow' }); $>
+		<div class='shp-button-set shp-button-set--right-aligned'>
+			<$- helpers.button("Cancel", { type: 'outlined', dark: true, icon: 'cancel', classes: [ 'shp-button-set__button' ], attributes: { id: 'shp-game-new__cancel-button' } }); $>
+			<$- helpers.button("Start game", { type: 'contained', raised: true, icon: 'play_arrow', classes: [ 'shp-button-set__button' ] }); $>
+		</div>
 	</footer>
 </div>
 

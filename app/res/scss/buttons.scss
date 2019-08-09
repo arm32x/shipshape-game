@@ -99,3 +99,20 @@
 	}
 }
 
+.shp-button-set {
+	font-size: 0rem;
+	
+	margin: -4px 0px;
+	
+	.shp-button-set__button {
+		margin: 4px 16px 4px 0px;
+	}
+	
+	&.shp-button-set--right-aligned {
+		text-align: right;
+		
+		.shp-button-set__button {
+			margin: 4px 0px 4px 16px;
+		}
+	}
+}
