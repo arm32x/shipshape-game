@@ -1,0 +1,23 @@
+<$# ShipShape  >  views  >  index  >  index                                  $>
+<$# 	The home page of the website.                                        $>
+
+<$- include('../header', { title: "Home" }); $>
+
+<div class='shp-maps shp-card'>
+	<header class='shp-card__header shp-card__header--outlined'>
+		<i class='shp-card__icon material-icons'>map</i>
+		<span class='shp-card__title'>Maps</span>
+	</header>
+	<div class='mdl-grid'>
+		<$ for (let id in maps) { $>
+			<div class='shp-map mdl-cell mdl-cell--4-col mdl-cell--3-col-desktop'>
+				<div class='shp-map__image' style='background-image: url(<$- maps[id].thumbnail $>);'></div>
+				<h4 class='shp-map__name'><$= maps[id].name $></h4>
+				<span class='shp-map__id'><$= id $></span>
+				<p class='shp-map__description'><$= maps[id].description $></p>
+			</div>
+		<$ } $>
+	</div>
+</div>
+
+<$- include('../footer'); $>

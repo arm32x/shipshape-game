@@ -8,8 +8,8 @@ const morgan  = require('morgan');
 const path    = require('path');
 
 const routers = {
-	index : [ '/',     require('./app/routers/index.js') ],
-	game  : [ '/game', require('./app/routers/game.js')  ]
+	game  : [ '/game', require('./app/routers/game.js')  ],
+	maps  : [ '/maps', require('./app/routers/maps.js')  ]
 };
 
 

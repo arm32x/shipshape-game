@@ -4,37 +4,33 @@
 @import 'typography';
 
 
-.shp-map-category {
-	.shp-map-category__maps {
-		display: flex;
-		flex-flow: row wrap;
-		justify-content: space-between;
-		align-content: flex-start;
-		align-items: flex-end;
-		margin-right: -16px;
-		margin-bottom: -32px;
+.shp-map {
+	position: relative;
+	
+	.shp-map__image {
+		display: block;
+		
+		background-color: #F5F5F5;
+		width: 100%;
+		padding-top: (9 / 16) * 100%;
+		background-size: cover;
+	}
 
-		.shp-map {
-			flex-grow: 1;
-			flex-basis: 320px;
-			margin-right: 16px;
-			margin-bottom: 32px;
-
-			.shp-map__image {
-				background-color: #F5F5F5;
-				width: 100%;
-				padding-top: (9 / 16) * 100%;
-				object-fit: cover;
-			}
-
-			.shp-map__name {
-				font: bold to-rem(16px) $body-text-fonts;
-				margin: 16px 0px 8px;
-			}
-			.shp-map__description {
-				margin: 0px;
-			}
-		}
+	.shp-map__name {
+		display: inline-block;
+		
+		font: bold to-rem(16px) $body-text-fonts;
+		margin: 20px 0px 8px;
+	}
+	.shp-map__id {
+		display: inline-block;
+		position: absolute;
+		right: 0px;
+		
+		font: to-rem(16px) $monospace-fonts;
+		text-transform: uppercase;
+	}
+	.shp-map__description {
+		margin: 0px;
 	}
 }
-

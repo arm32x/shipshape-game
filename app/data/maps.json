@@ -1,0 +1,40 @@
+{
+	"0000-0000": {
+		"name": "Battleship",
+		"description": "The map from the original Battleship game.",
+		"thumbnail": "",
+		"size": { "x": 10, "y": 10 },
+		"ships": [ 5, 4, 3, 3, 2 ],
+		"targeting": [
+			[ null,  "A",  "B",  "C",  "D",  "E",  "F",  "G",  "H",  "I",  "J" ],
+			[  "1", null, null, null, null, null, null, null, null, null, null ],
+			[  "2", null, null, null, null, null, null, null, null, null, null ],
+			[  "3", null, null, null, null, null, null, null, null, null, null ],
+			[  "4", null, null, null, null, null, null, null, null, null, null ],
+			[  "5", null, null, null, null, null, null, null, null, null, null ],
+			[  "6", null, null, null, null, null, null, null, null, null, null ],
+			[  "7", null, null, null, null, null, null, null, null, null, null ],
+			[  "8", null, null, null, null, null, null, null, null, null, null ],
+			[  "9", null, null, null, null, null, null, null, null, null, null ],
+			[ "10", null, null, null, null, null, null, null, null, null, null ]
+		]
+	},
+	"E29F-0B13": {
+		"name": "French Verb Conjugation",
+		"description": "Target other ships by conjugating verbs in French.",
+		"thumbnail": "",
+		"size": { "x": 12, "y": 8 },
+		"ships": [ 5, 4, 3, 3, 2 ],
+		"targeting": [
+			[    null, "commencer",        "venir",          "être",        "faire",        "espérer",        "avoir",      "aller",       "préférer",        "lancer",        "répéter",        "acheter",        "lever"        ],
+			[    "Je", "Je commence",      "Je viens",       "Je suis",     "Je fais",      "J'espère",       "J'ai",       "Je vais",     "Je préfère",      "Je lance",      "Je répète",      "J'achète",       "Je lève"      ],
+			[    "Tu", "Tu commences",     "Tu viens",       "Tu es",       "Tu fais",      "Tu espères",     "Tu as",      "Tu vas",      "Tu préfères",     "Tu lances",     "Tu répètes",     "Tu achètes",     "Tu lèves"     ],
+			[    "Il", "Il commence",      "Il vient",       "Il est",      "Il fait",      "Il espère",      "Il a",       "Il va",       "Il préfère",      "Il lance",      "Il répète",      "Il achète",      "Il lève"      ],
+			[  "Elle", "Elle commence",    "Elle vient",     "Elle est",    "Elle fait",    "Elle espère",    "Elle a",     "Elle va",     "Elle préfère",    "Elle lance",    "Elle répète",    "Elle achète",    "Elle lève"    ],
+			[  "Nous", "Nous commençons",  "Nous venons",    "Nous sommes", "Nous faisons", "Nous espérons",  "Nous avons", "Nous allons", "Nous préférons",  "Nous lançons",  "Nous répétons",  "Nous achetons",  "Nous levons"  ],
+			[  "Vous", "Vous commencez",   "Vous venez",     "Vous êtes",   "Vous faites",  "Vous espérez",   "Vous avez",  "Vous allez",  "Vous préférez",   "Vous lancez",   "Vous répétez",   "Vous achetez",   "Vous levez"   ],
+			[   "Ils", "Ils commencent",   "Ils viennent",   "Ils sont",    "Ils font",     "Ils espèrent",   "Ils ont",    "Ils vont",    "Ils préfèrent",   "Ils lancent",   "Ils répètent",   "Ils achètent",   "Ils lèvent"   ],
+			[ "Elles", "Elles commencent", "Elles viennent", "Elles sont",  "Elles font",   "Elles espèrent", "Elles ont",  "Elles vont",  "Elles préfèrent", "Elles lancent", "Elles répètent", "Elles achètent", "Elles lèvent" ]
+		]
+	}
+}
