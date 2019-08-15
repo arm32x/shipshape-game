@@ -1,0 +1,108 @@
+/// ShipShape  >  scss  >  main
+/// 	Style the main game page.
+
+@import 'colors';
+@import 'typography';
+
+.shp-game {
+	display: block;
+	
+	background: {
+		color: #111111;
+		image: url('/res/images/header-texture-white.png');
+		repeat: repeat;
+	};
+	
+	overflow: hidden;
+	
+	body {
+		position: absolute;
+		top: 0px;
+		left: 0px;
+		
+		width: 100vw;
+		height: 100vh;
+		
+		overflow: scroll;
+		
+		.shp-game__scrollbox {
+			display: inline-block;
+		
+			padding: 100vh 100vw;
+		}
+		
+		&.pushed {
+			cursor: grab;
+		}
+	}
+}
+
+.shp-game-board {
+	table-layout: fixed;
+	
+	width: auto;
+	
+	margin-right: 112px;
+	
+	border-collapse: collapse;
+	border-spacing: 0px;
+	
+	.shp-game-board__tile {
+		box-sizing: border-box;
+		
+		width: 32px;
+		height: 32px;
+		
+		padding: 0px;
+		
+		border: 0px hidden;
+		border-radius: 0px;
+		
+		background-image: url('/res/images/ocean.png');
+		background-size: cover;
+		image-rendering: pixelated;
+	}
+	
+	.shp-game-board__column-header {
+		box-sizing: border-box;
+		
+		height: 144px;
+		
+		padding: 0px;
+		
+		border: 0px hidden;
+		border-radius: 0px;
+		
+		font: to-rem(14px) $monospace-fonts;
+		white-space: nowrap;
+		
+		color: $white-text-color-1;
+		
+		> div {
+			width: 32px;
+			
+			transform: translate(0px, 51px) rotate(315deg);
+			
+			> span {
+				padding: 4px 8px;
+			}
+		}
+	}
+	
+	.shp-game-board__row-header {
+		box-sizing: border-box;
+		
+		height: 32px;
+		
+		padding: 4px 8px;
+		
+		border: 0px hidden;
+		border-radius: 0px;
+		
+		font: to-rem(14px) $monospace-fonts;
+		white-space: nowrap;
+		text-align: right;
+		
+		color: $white-text-color-1;
+	}
+}

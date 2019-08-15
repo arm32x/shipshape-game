@@ -1,4 +1,4 @@
-/// ShipShape	>	res	>	js	>	game	>	new
+/// ShipShape  >  res  >  js  >  game  >  new
 ///		 Controls the new game page on the client side.
 
 let cancelButton = document.getElementById('shp-game-new__cancel-button');

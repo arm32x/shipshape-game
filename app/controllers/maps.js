@@ -1,9 +1,7 @@
 /// ShipShape  >  controllers  >  maps
 /// 	Handle serving maps from the JSON file.
 
-const fs = require('fs');
-
-let maps = JSON.parse(fs.readFileSync('app/data/maps.json'));
+let maps = require('../data/maps');
 
 module.exports = {
 	

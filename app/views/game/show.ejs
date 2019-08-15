@@ -1,0 +1,58 @@
+<$# ShipShape  >  views  >  game  >  index                                    $>
+<$#     The page that the game is played on.                                  $>
+
+<!DOCTYPE html>
+<html class='shp-game'>
+	<head>
+		<meta charset='utf-8' />
+		<meta name='viewport' content='width=device-width, initial-scale=1' />
+		
+		<title>ShipShape</title>
+		<meta name='author' content='ARM32' />
+
+		<$# Include some fonts from Google Fonts.                             $>
+		<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Lobster+Two:400,700|Space+Mono|Work+Sans:400,600' />
+		<link rel='stylesheet' href='https://fonts.googleapis.com/icon?family=Material+Icons' />
+		
+		<$# Include rippleJS for the Material Design ripple effect.           $>
+		<script src='https://cdn.rawgit.com/samthor/rippleJS/v1.0.2/ripple.min.js' async></script>
+		
+		<$# Include anime.js for JavaScript animations.                       $>
+		<script src='https://cdn.rawgit.com/juliangarnier/anime/v2.2.0/anime.min.js' defer></script>
+		
+		<$# Include Materialize for form inputs. $>
+	    <script src="/res/materialize.min.js" defer></script>
+	    
+	    <$# Include a modified version of dragscroll for scrolling the map.   $>
+	    <script src='/res/dragscroll.js' defer></script>
+        
+		<$# Include CSS and JS.                                               $>
+		<link rel='stylesheet' href='/res/index.css' />
+		<script src='/res/index.js' defer></script>
+	</head>
+	<body class='dragscroll' oncontextmenu='return false;'>
+		<div class='shp-game__scrollbox'>
+			<table class='shp-game-board' border='0' cellpadding='0' cellspacing='0'>
+				<$ for (let y = 0; y < game.map.targeting.length; y++) { $>
+					<tr>
+						<$ for (let x = 0; x < game.map.targeting[y].length; x++) { $>
+							<$ if (x == 0 && y == 0) { $>
+								<th></th>
+							<$ } else if (x > 0 && y == 0) { $>
+								<th class='shp-game-board__column-header'>
+									<div><span><$= game.map.targeting[0][x] $></span></div>
+								</th>
+							<$ } else if (x == 0 && y > 0) { $>
+								<th class='shp-game-board__row-header'>
+									<div><span><$= game.map.targeting[y][0] $></span></div>
+								</th>
+							<$ } else { $>
+								<td class='shp-game-board__tile'></td>
+							<$ } $>
+						<$ } $>
+					</tr>
+				<$ } $>
+			</table>
+		</div>
+	</body>
+</html>

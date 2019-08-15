@@ -4,7 +4,7 @@
 		"description": "The map from the original Battleship game.",
 		"thumbnail": "",
 		"size": { "x": 10, "y": 10 },
-		"ships": [ 5, 4, 3, 3, 2 ],
+		"ships": { "carrier": 1, "battleship": 1, "destroyer": 1, "submarine": 1, "patrolBoat": 1 },
 		"targeting": [
 			[ null,  "A",  "B",  "C",  "D",  "E",  "F",  "G",  "H",  "I",  "J" ],
 			[  "1", null, null, null, null, null, null, null, null, null, null ],
@@ -24,7 +24,7 @@
 		"description": "Target other ships by conjugating verbs in French.",
 		"thumbnail": "",
 		"size": { "x": 12, "y": 8 },
-		"ships": [ 5, 4, 3, 3, 2 ],
+		"ships": { "carrier": 1, "battleship": 1, "destroyer": 1, "submarine": 1, "patrolBoat": 1 },
 		"targeting": [
 			[    null, "commencer",        "venir",          "être",        "faire",        "espérer",        "avoir",      "aller",       "préférer",        "lancer",        "répéter",        "acheter",        "lever"        ],
 			[    "Je", "Je commence",      "Je viens",       "Je suis",     "Je fais",      "J'espère",       "J'ai",       "Je vais",     "Je préfère",      "Je lance",      "Je répète",      "J'achète",       "Je lève"      ],

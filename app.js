@@ -1,11 +1,12 @@
 /// ShipShape  >  app
 /// 	The main app entry point.  Links up all the other stuff.
 
-const express = require('express');
-const app     = express();
+const express    = require('express');
+const app        = express();
 
-const morgan  = require('morgan');
-const path    = require('path');
+const morgan     = require('morgan');
+const path       = require('path');
+const bodyParser = require('body-parser');
 
 const routers = {
 	game  : [ '/game', require('./app/routers/game.js')  ],
@@ -29,6 +30,9 @@ app.set('view options', {
 // Attach helpers for EJS views.
 app.locals.helpers = require('./app/ejs-helpers.js');
 app.locals.require = require;
+
+// Parse form submissions.
+app.use(bodyParser.urlencoded({ extended: false }));
 
 // Connect routers.
 for (let index = 0; index < Object.keys(routers).length; index++) {
