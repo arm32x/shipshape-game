@@ -4,6 +4,10 @@
 @import 'colors';
 @import 'typography';
 
+@mixin tile($x, $y) {
+	background-position: $x * -32px $y * -32px;
+}
+
 .shp-game {
 	display: block;
 	
@@ -16,6 +20,7 @@
 	overflow: hidden;
 	
 	body {
+		display: grid;
 		position: absolute;
 		top: 0px;
 		left: 0px;
@@ -23,12 +28,12 @@
 		width: 100vw;
 		height: 100vh;
 		
+		text-align: center;
+		
 		overflow: scroll;
 		
 		.shp-game__scrollbox {
-			display: inline-block;
-		
-			padding: 100vh 100vw;
+			margin: auto;
 		}
 		
 		&.pushed {
@@ -42,12 +47,14 @@
 	
 	width: auto;
 	
-	margin-right: 112px;
+	margin: 0px 144px 144px 0px;
 	
 	border-collapse: collapse;
 	border-spacing: 0px;
 	
 	.shp-game-board__tile {
+		@include tile(0, 5);
+		
 		box-sizing: border-box;
 		
 		width: 32px;
@@ -58,15 +65,24 @@
 		border: 0px hidden;
 		border-radius: 0px;
 		
-		background-image: url('/res/images/ocean.png');
-		background-size: cover;
+		background-image: url('/res/images/tileset.png');
+		background-size: 320px;
 		image-rendering: pixelated;
+		
+		@for $y from 0 through 9 {
+			@for $x from 0 through 9 {
+				&.shp-game-board__tile--#{$x}-#{$y} {
+					@include tile($x, $y);
+				}
+			}
+		}
 	}
 	
 	.shp-game-board__column-header {
 		box-sizing: border-box;
 		
 		height: 144px;
+		min-height: 144px;
 		
 		padding: 0px;
 		
@@ -92,9 +108,11 @@
 	.shp-game-board__row-header {
 		box-sizing: border-box;
 		
+		width: 144px;
 		height: 32px;
+		min-width: 144px;
 		
-		padding: 4px 8px;
+		padding: 4px 12px;
 		
 		border: 0px hidden;
 		border-radius: 0px;
