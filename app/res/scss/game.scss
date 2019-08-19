@@ -13,7 +13,7 @@
 	
 	background: {
 		color: #111111;
-		image: url('/res/images/header-texture-white.png');
+		image: url('/res/images/header-texture-white.png'), linear-gradient(-11.25deg, darken(#111111, 3.125%), lighten(#111111, 3.125%));
 		repeat: repeat;
 	};
 	

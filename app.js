@@ -7,6 +7,7 @@ const app        = express();
 const morgan     = require('morgan');
 const path       = require('path');
 const bodyParser = require('body-parser');
+const wsInstance = require('express-ws')(app);
 
 const routers = {
 	game  : [ '/game', require('./app/routers/game.js')  ],

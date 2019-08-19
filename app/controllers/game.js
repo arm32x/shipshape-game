@@ -37,13 +37,16 @@ module.exports = {
 				return;
 			}
 			
-			let gameID = '';
-			for (let index = 0; index < 8; index++) {
-				if (index == 4) {
-					gameID += '-';
+			let gameID;
+			do {
+				gameID = '';
+				for (let index = 0; index < 8; index++) {
+					if (index == 4) {
+						gameID += '-';
+					}
+					gameID += '0123456789ABCDEF'.charAt(Math.floor(Math.random() * 16));
 				}
-				gameID += '0123456789ABCDEF'.charAt(Math.floor(Math.random() * 16));
-			}
+			} while (gameID in games);
 			
 			games[gameID] = {
 				id: gameID,
