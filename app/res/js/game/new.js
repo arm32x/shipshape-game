@@ -23,8 +23,10 @@ let multiplayerMode = undefined;
 			}
 		}
 	}
-	update({ target: selectElem.querySelector('[selected]') });
-	selectElem.addEventListener('change', update);
+	if (selectElem) {
+		update({ target: selectElem.querySelector('[selected]') });
+		selectElem.addEventListener('change', update);
+	}
 }
 
 {// Handle the input of the map ID.
@@ -52,5 +54,5 @@ let multiplayerMode = undefined;
 	}
 	
 	let inputElem = document.getElementById('shp-game-new__map-id-input');
-	setInputFilter(inputElem, /^([0-9A-F]{0,4}?|[0-9A-F]{4}-[0-9A-F]{0,4})$/i);
+	if (inputElem) setInputFilter(inputElem, /^([0-9A-F]{0,4}?|[0-9A-F]{4}-[0-9A-F]{0,4})$/i);
 }

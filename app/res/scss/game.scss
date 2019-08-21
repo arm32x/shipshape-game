@@ -56,14 +56,21 @@
 		@include tile(0, 5);
 		
 		box-sizing: border-box;
+		position: relative;
 		
 		width: 32px;
 		height: 32px;
+		max-width: 32px;
+		max-height: 32px;
 		
 		padding: 0px;
 		
 		border: 0px hidden;
 		border-radius: 0px;
+		
+		overflow: visible;
+		
+		line-height: 0px;
 		
 		background-image: url('/res/images/tileset.png');
 		background-size: 320px;
@@ -75,6 +82,17 @@
 					@include tile($x, $y);
 				}
 			}
+		}
+		
+		.shp-ship {
+			position: absolute;
+			top: 0px;
+			left: 0px;
+			
+			opacity: 0.50;
+			
+			z-index: 1;
+			pointer-events: none;
 		}
 	}
 	
@@ -123,4 +141,94 @@
 		
 		color: $white-text-color-1;
 	}
+}
+
+.shp-game-ship-case {
+	position: fixed;
+	left: 0px;
+	bottom: 0px;
+	right: 0px;
+	box-sizing: content-box;
+	
+	min-height: 32px;
+	
+	padding: 16px;
+	margin: 0px;
+	
+	font-size: 0px;
+	
+	text-align: left;
+	list-style: none;
+	
+	.shp-ship {
+		margin-right: 16px;
+	}
+}
+
+.shp-ship {
+	display: inline-block;
+	
+	margin: 0px;
+	padding: 0px;
+	
+	background-image: url('/res/images/ships.png');
+	background-size: 320px;
+	image-rendering: pixelated;
+	
+	&.shp-ship--facing-left, &.shp-ship--facing-right {
+		height: 32px;
+		
+		&.shp-ship--patrolBoat { width:  64px; }
+		&.shp-ship--destroyer  { width:  96px; }
+		&.shp-ship--submarine  { width:  96px; }
+		&.shp-ship--battleship { width: 128px; }
+		&.shp-ship--carrier    { width: 160px; }
+	}
+	&.shp-ship--facing-up, &.shp-ship--facing-down {
+		width: 32px;
+		
+		&.shp-ship--patrolBoat { height:  64px; }
+		&.shp-ship--destroyer  { height:  96px; }
+		&.shp-ship--submarine  { height:  96px; }
+		&.shp-ship--battleship { height: 128px; }
+		&.shp-ship--carrier    { height: 160px; }
+	}
+	
+	&.shp-ship--patrolBoat {
+		&.shp-ship--facing-up    { @include tile(0, 8); }
+		&.shp-ship--facing-down  { @include tile(0, 0); }
+		&.shp-ship--facing-left  { @include tile(8, 4); }
+		&.shp-ship--facing-right { @include tile(5, 5); }
+	}
+	&.shp-ship--destroyer {
+		&.shp-ship--facing-up    { @include tile(1, 7); }
+		&.shp-ship--facing-down  { @include tile(1, 0); }
+		&.shp-ship--facing-left  { @include tile(7, 3); }
+		&.shp-ship--facing-right { @include tile(5, 6); }
+	}
+	&.shp-ship--submarine {
+		&.shp-ship--facing-up    { @include tile(2, 7); }
+		&.shp-ship--facing-down  { @include tile(2, 0); }
+		&.shp-ship--facing-left  { @include tile(7, 2); }
+		&.shp-ship--facing-right { @include tile(5, 7); }
+	}
+	&.shp-ship--battleship {
+		&.shp-ship--facing-up    { @include tile(3, 6); }
+		&.shp-ship--facing-down  { @include tile(3, 0); }
+		&.shp-ship--facing-left  { @include tile(6, 1); }
+		&.shp-ship--facing-right { @include tile(5, 8); }
+	}
+	&.shp-ship--carrier {
+		&.shp-ship--facing-up    { @include tile(4, 5); }
+		&.shp-ship--facing-down  { @include tile(4, 0); }
+		&.shp-ship--facing-left  { @include tile(5, 0); }
+		&.shp-ship--facing-right { @include tile(5, 9); }
+	}
+}
+
+.draggable-source--is-dragging {
+	opacity: 0.00;
+}
+.draggable-mirror {
+	opacity: 0.50;
 }

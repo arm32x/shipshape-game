@@ -25,6 +25,9 @@
 	    
 	    <$# Include a modified version of dragscroll for scrolling the map.   $>
 	    <script src='/res/dragscroll.js' defer></script>
+	    
+	    <$# Include Draggable for ship placement.                             $>
+	    <script src='https://cdn.jsdelivr.net/npm/@shopify/draggable@1.0.0-beta.8/lib/draggable.bundle.js'></script>
         
 		<$# Include CSS and JS.                                               $>
 		<link rel='stylesheet' href='/res/index.css' />
@@ -32,7 +35,7 @@
 	</head>
 	<body class='dragscroll' oncontextmenu='return false;'>
 		<div class='shp-game__scrollbox'>
-			<table class='shp-game-board' border='0' cellpadding='0' cellspacing='0'>
+			<table class='shp-game-board' data-width='<$= game.map.targeting[0].length - 1 $>' data-height='<$= game.map.targeting.length - 1 $>' border='0' cellpadding='0' cellspacing='0'>
 				<$ for (let y = 0; y < game.map.targeting.length; y++) { $>
 					<tr>
 						<$ for (let x = 0; x < game.map.targeting[y].length; x++) { $>
@@ -47,12 +50,17 @@
 									<div><span><$= game.map.targeting[y][0] $></span></div>
 								</th>
 							<$ } else { $>
-								<td class='shp-game-board__tile'></td>
+								<td class='shp-game-board__tile' data-x='<$= x - 1 $>' data-y='<$= y - 1 $>'></td>
 							<$ } $>
 						<$ } $>
 					</tr>
 				<$ } $>
 			</table>
 		</div>
+		<ul class='shp-game-ship-case browser-default draggable-dropzone--occupied'>
+			<$ for (let shipType in game.map.ships) { $>
+				<li class='shp-ship shp-ship--<$= shipType $> shp-ship--facing-right'></li>
+			<$ } $>
+		</ul>
 	</body>
 </html>
