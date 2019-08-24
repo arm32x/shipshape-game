@@ -10,7 +10,8 @@ const bodyParser = require('body-parser');
 
 const routers = {
 	game  : [ '/game', require('./app/routers/game.js')  ],
-	maps  : [ '/maps', require('./app/routers/maps.js')  ]
+	maps  : [ '/maps', require('./app/routers/maps.js')  ],
+	index : [ '/',     require('./app/routers/index.js') ]
 };
 
 
