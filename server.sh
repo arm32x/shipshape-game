@@ -1,7 +1,7 @@
 #!/usr/bin/bash
 
 if [ "$NODE_ENV" = "production" ]; then
-	gulp build
+	gulp
 	node app.js
 else
 	gulp &
