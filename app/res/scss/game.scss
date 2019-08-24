@@ -33,6 +33,8 @@
 		overflow: scroll;
 		
 		.shp-game__scrollbox {
+			position: relative;
+			
 			margin: auto;
 		}
 		
@@ -51,6 +53,13 @@
 	
 	border-collapse: collapse;
 	border-spacing: 0px;
+	
+	.shp-game--player-turn &.shp-game-board--player {
+		display: none;
+	}
+	.shp-game--opponent-turn &.shp-game-board--opponent {
+		display: none;
+	}
 	
 	.shp-game-board__tile {
 		@include tile(0, 5);
@@ -89,7 +98,7 @@
 			top: 0px;
 			left: 0px;
 			
-			opacity: 0.50;
+			opacity: 0.65;
 			
 			z-index: 1;
 			pointer-events: none;
@@ -118,7 +127,7 @@
 			transform: translate(0px, 51px) rotate(315deg);
 			
 			> span {
-				padding: 4px 8px;
+				margin: 4px 8px;
 			}
 		}
 	}
@@ -153,15 +162,42 @@
 	min-height: 32px;
 	
 	padding: 16px;
+	padding-top: 8px;
 	margin: 0px;
 	
 	font-size: 0px;
+	line-height: 0px;
 	
 	text-align: left;
 	list-style: none;
 	
+	@media (max-width: 480px) {
+		padding-right: 88px;
+	}
+	
+	.shp-game--player-turn & {
+		display: none;
+	}
+	
 	.shp-ship {
-		margin-right: 16px;
+		margin-top: 8px;
+		margin-right: 8px;
+	}
+	
+	.shp-game-ship-case__rotate-button {
+		position: absolute;
+		bottom: 16px;
+		right: 16px;
+		
+		margin: 6px 0px -2px 0px;
+		
+		vertical-align: bottom;
+		
+		@media (max-width: 480px) {
+			padding-right: 16px;
+			
+			font-size: 0px;
+		}
 	}
 }
 
@@ -226,9 +262,124 @@
 	}
 }
 
-.draggable-source--is-dragging {
-	opacity: 0.00;
+.draggable-source--is-dragging, .draggable--over {
+	opacity: 0.65;
 }
 .draggable-mirror {
-	opacity: 0.50;
+	opacity: 0.00;
+}
+
+.shp-game-header {
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	right: 0px;
+	
+	height: 64px;
+	
+	text-align: center;
+	
+	.shp-game-header__logo {
+		float: left;
+		
+		width: 128px;
+		
+		font: bold to-rem(24px) $logo-text-fonts;
+		line-height: 24px;
+		text-align: left;
+		
+		color: $white-text-color-1;
+	}
+	
+	.shp-game-header__status {
+		font: to-rem(14px) $monospace-fonts;
+		line-height: 24px;
+		
+		color: $white-text-color-1;
+	}
+	
+	.shp-game-header__id {
+		float: right;
+		
+		width: 128px;
+		
+		font: to-rem(20px) $monospace-fonts;
+		line-height: 24px;
+		text-align: right;
+		
+		color: $white-text-color-1;
+	}
+}
+
+.shp-game-targeting {
+	position: fixed;
+	left: 0px;
+	bottom: 0px;
+	right: 0px;
+	box-sizing: content-box;
+	
+	min-height: 32px;
+	
+	padding: 16px;
+	margin: 0px;
+	
+	font-size: 0px;
+	line-height: 0px;
+	text-align: center;
+	
+	.shp-game--opponent-turn & {
+		display: none;
+	}
+	
+	#shp-game-targeting__input {
+		display: block;
+		
+		font: to-rem(32px) $monospace-fonts;
+		
+		color: $white-text-color-1;
+	}
+	
+	.input-field label {
+		font-family: $monospace-fonts;
+		
+		color: $white-text-color-3;
+	}
+	.input-field input[type='text']:focus + label {
+		font-family: $monospace-fonts;
+		
+		color: $white-text-color-1;
+	}
+	.input-field input[type='text'] {
+		border-bottom: 1px solid $white-divider-color;
+	}
+	.input-field input[type='text']:focus {
+		border-bottom: 1px solid $white-text-color-1;
+		box-shadow: 0 1px 0 0 $white-text-color-1;
+	}
+	.input-field .prefix.active {
+		color: $white-text-color-1;
+	}
+	
+}
+
+.shp-game-explosion {
+	display: block;
+	position: absolute;
+	top: 144px;
+	left: 144px;
+	
+	width: 32px;
+	height: 32px;
+	
+	background-image: url('/res/images/explosion.png');
+	background-size: 224px 32px;
+	background-position: 0px 0px;
+	image-rendering: pixelated;
+	
+	animation: explosion 600ms steps(6);
+	animation-fill-mode: forwards;
+}
+
+@keyframes explosion {
+	100% { background-position: -192px 0px; };
 }

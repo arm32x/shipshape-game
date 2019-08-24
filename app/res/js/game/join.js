@@ -1,28 +1,7 @@
 /// ShipShape  >  res  >  js  >  game  >  new
-///		 Controls the new game page on the client side.
+///		 Controls the join game page on the client side.
 
-let multiplayerMode = undefined;
-{// Handle the selection of multiplayer modes.
-	let selectElem = document.getElementById('shp-game-new__multiplayer-mode-select');
-	let select = M.FormSelect.init(selectElem);
-
-	let descriptions = document.getElementsByClassName('shp-game-new__multiplayer-mode-description');
-	function update(e) {
-		multiplayerMode = e.target.value;
-		for (let description of descriptions) {
-			description.style.display = 'none';
-			if (description.getAttribute('data-multiplayer-mode') == multiplayerMode) {
-				description.style.display = 'block';
-			}
-		}
-	}
-	if (selectElem) {
-		update({ target: selectElem.querySelector('[selected]') });
-		selectElem.addEventListener('change', update);
-	}
-}
-
-{// Handle the input of the map ID.
+{// Handle the input of the game ID.
 	// Restricts input for the given textbox to the given regex inputFilter.
 	function setInputFilter(textbox, inputFilter) {
 	 	["input", "keydown", "keyup", "mousedown", "mouseup", "select", "contextmenu", "drop"].forEach(function(event) {
@@ -46,6 +25,6 @@ let multiplayerMode = undefined;
 		});
 	}
 	
-	let inputElem = document.getElementById('shp-game-new__map-id-input');
+	let inputElem = document.getElementById('shp-game-join__game-id-input');
 	if (inputElem) setInputFilter(inputElem, /^([0-9A-F]{0,4}?|[0-9A-F]{4}-[0-9A-F]{0,4})$/i);
 }

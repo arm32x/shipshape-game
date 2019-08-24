@@ -44,12 +44,12 @@ html {
 	margin-bottom: 0px;
 }
 
-#shp-game-new__map-id-input {
+#shp-game-new__map-id-input, #shp-game-join__game-id-input {
 	position: relative;
 	z-index: 1;
 }
 
-#shp-game-new__map-id-persistent-placeholder {
+#shp-game-new__map-id-persistent-placeholder, #shp-game-join__game-id-persistent-placeholder {
 	display: inline-block;
 	position: absolute;
 	top: 12px;
@@ -72,4 +72,12 @@ html {
 
 .shp--error {
 	color: $error-color;
+}
+.shp-warning {
+	color: $warning-color;
+}
+
+::selection {
+	color: inherit;
+	background-color: lighten($accent-color, 50%);
 }

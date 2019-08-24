@@ -1,0 +1,39 @@
+<$# ShipShape  >  views  >  maps  >  new                                     $>
+<$# 	Creates a new map.                                                   $>
+
+<$- include('../header', { title: "Map Editor" }); $>
+
+<div class='shp-map-editor shp-card'>
+	<header class='shp-card__header shp-card__header--outlined'>
+		<i class='shp-card__icon material-icons'>edit</i>
+			<span class='shp-card__title'>Map editor</span>
+	</header>
+	<main class='shp-map-editor__scrollbox'>
+		<div class='shp-map-editor__board-container'>
+			<table class='shp-game-board shp-map-editor__board' border='0' cellpadding='0' cellspacing='0'>
+				<$ for (let y = 0; y < 11; y++) { $>
+					<tr>
+						<$ for (let x = 0; x < 11; x++) { $>
+							<$ if (x == 0 && y == 0) { $>
+								<th></th>
+							<$ } else if (x > 0 && y == 0) { $>
+								<th class='shp-game-board__column-header'>
+									<div><span contenteditable='true'>Column <$= x $></span></div>
+								</th>
+							<$ } else if (x == 0 && y > 0) { $>
+								<th class='shp-game-board__row-header'>
+									<div><span contenteditable='true'>Row <$= y $></span></div>
+								</th>
+							<$ } else { $>
+								<td class='shp-game-board__tile shp-game-board__tile--0-5' data-x='<$= x - 1 $>' data-y='<$= y - 1 $>'></td>
+							<$ } $>
+						<$ } $>
+					</tr>
+				<$ } $>
+			</table>
+			
+		</div>
+	</main>
+</div>
+
+<$- include('../footer'); $>

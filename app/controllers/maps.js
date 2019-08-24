@@ -11,14 +11,9 @@ module.exports = {
 		}
 	],
 	
-	showJSON: [
-		function maps_showJSON(req, res, next) {
-			let id = req.params.id.toUpperCase();
-			if (id in maps) {
-				res.json(maps[id]);
-			} else {
-				res.status(404).end();
-			}
+	new: [
+		function maps_new(req, res, next) {
+			res.render('maps/new');
 		}
 	]
 

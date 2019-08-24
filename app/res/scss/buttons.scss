@@ -38,18 +38,18 @@
 	}
 	
 	color: $accent-color;
-	&:hover {
+	&:not(:disabled):hover {
 		background-color: rgba($accent-color, 0.20);
 	}
 	&.shp-button--light {
 		color: $white-text-color-1;
-		&:hover {
+		&:not(:disabled):hover {
 			background-color: rgba($white-text-color-1, 0.20);
 		}
 	}
 	&.shp-button--dark {
 		color: $black-text-color-1;
-		&:hover {
+		&:not(:disabled):hover {
 			background-color: rgba($black-text-color-1, 0.20);
 		}
 	}
@@ -79,22 +79,30 @@
 	&.shp-button--contained {
 		background-color: $accent-color;
 		color: $white-text-color-1;
-		&:hover {
+		&:not(:disabled):hover {
 			background-color: mix(rgba($white-text-color-1, 1.00), $accent-color, 20%);
 		}
 		&.shp-button--light {
 			color: $black-text-color-1;
-			&:hover {
+			&:not(:disabled):hover {
 				background-color: mix(rgba($black-text-color-1, 1.00), $accent-color, 20%);
 			}
 		}
 
 		&.shp-button--raised {
 			@include material-elevation(2);
-			&:hover {
+			&:not(:disabled):hover {
 				@include material-elevation(4);
 			}
 			transition: background-color 150ms $standard, box-shadow 150ms $standard;
+		}
+	}
+	
+	&:disabled {
+		cursor: inherit;
+		
+		.rippleJS {
+			display: none;
 		}
 	}
 }

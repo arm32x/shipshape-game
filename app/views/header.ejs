@@ -45,7 +45,8 @@
 			<div class='shp-header__row shp-header__row--navigation'>
 				<div class='shp-navigation shp-navigation--horizontal'>
 					<div class='shp-button-set'>
-						<$- helpers.navigationLink("New game", '/game/new', { type: 'contained', icon: 'play_arrow', classes: [ 'shp-button-set__button' ] }); $>
+						<$- helpers.navigationLink("New game", '/game/new', { type: 'contained', raised: true, icon: 'play_arrow', classes: [ 'shp-button-set__button' ] }); $>
+						<$- helpers.navigationLink("Join game", '/game/join', { type: 'outlined', light: true, icon: 'gamepad', classes: [ 'shp-button-set__button' ] }); $>
 						<$- helpers.navigationLink("Maps", '/maps', { type: 'outlined', light: true, icon: 'map', classes: [ 'shp-button-set__button' ] }); $>
 					</div>
 				</div>

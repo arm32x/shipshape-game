@@ -2,7 +2,7 @@
 <$#     The page that the game is played on.                                  $>
 
 <!DOCTYPE html>
-<html class='shp-game'>
+<html class='shp-game shp-game--opponent-turn'>
 	<head>
 		<meta charset='utf-8' />
 		<meta name='viewport' content='width=device-width, initial-scale=1' />
@@ -28,14 +28,22 @@
 	    
 	    <$# Include Draggable for ship placement.                             $>
 	    <script src='https://cdn.jsdelivr.net/npm/@shopify/draggable@1.0.0-beta.8/lib/draggable.bundle.js'></script>
+	    
+	    <$# Include socket.io for client-server communication. $>
+	    <script src='/socket.io/socket.io.js'></script>
         
 		<$# Include CSS and JS.                                               $>
 		<link rel='stylesheet' href='/res/index.css' />
 		<script src='/res/index.js' defer></script>
 	</head>
 	<body class='dragscroll' oncontextmenu='return false;'>
+		<header class='shp-game-header shp-header__row'>
+			<span class='shp-game-header__logo'>ShipShape</span>
+			<span class='shp-game-header__id'><$= game.id $></span>
+			<span class='shp-game-header__status'></span>
+		</header>
 		<div class='shp-game__scrollbox'>
-			<table class='shp-game-board' data-width='<$= game.map.targeting[0].length - 1 $>' data-height='<$= game.map.targeting.length - 1 $>' border='0' cellpadding='0' cellspacing='0'>
+			<table class='shp-game-board shp-game-board--player' data-width='<$= game.map.targeting[0].length - 1 $>' data-height='<$= game.map.targeting.length - 1 $>' border='0' cellpadding='0' cellspacing='0'>
 				<$ for (let y = 0; y < game.map.targeting.length; y++) { $>
 					<tr>
 						<$ for (let x = 0; x < game.map.targeting[y].length; x++) { $>
@@ -50,7 +58,28 @@
 									<div><span><$= game.map.targeting[y][0] $></span></div>
 								</th>
 							<$ } else { $>
-								<td class='shp-game-board__tile' data-x='<$= x - 1 $>' data-y='<$= y - 1 $>'></td>
+								<td class='shp-game-board__tile shp-game-board__tile--0-5' data-x='<$= x - 1 $>' data-y='<$= y - 1 $>'></td>
+							<$ } $>
+						<$ } $>
+					</tr>
+				<$ } $>
+			</table>
+			<table class='shp-game-board shp-game-board--opponent' data-width='<$= game.map.targeting[0].length - 1 $>' data-height='<$= game.map.targeting.length - 1 $>' border='0' cellpadding='0' cellspacing='0'>
+				<$ for (let y = 0; y < game.map.targeting.length; y++) { $>
+					<tr>
+						<$ for (let x = 0; x < game.map.targeting[y].length; x++) { $>
+							<$ if (x == 0 && y == 0) { $>
+								<th></th>
+							<$ } else if (x > 0 && y == 0) { $>
+								<th class='shp-game-board__column-header'>
+									<div><span><$= game.map.targeting[0][x] $></span></div>
+								</th>
+							<$ } else if (x == 0 && y > 0) { $>
+								<th class='shp-game-board__row-header'>
+									<div><span><$= game.map.targeting[y][0] $></span></div>
+								</th>
+							<$ } else { $>
+								<td class='shp-game-board__tile shp-game-board__tile--1-5' data-x='<$= x - 1 $>' data-y='<$= y - 1 $>'></td>
 							<$ } $>
 						<$ } $>
 					</tr>
@@ -59,8 +88,18 @@
 		</div>
 		<ul class='shp-game-ship-case browser-default draggable-dropzone--occupied'>
 			<$ for (let shipType in game.map.ships) { $>
-				<li class='shp-ship shp-ship--<$= shipType $> shp-ship--facing-right'></li>
+				<$ for (let index = 0; index < game.map.ships[shipType]; index++) { $>
+					<li class='shp-ship shp-ship--<$= shipType $> shp-ship--facing-right'></li>
+				<$ } $>
 			<$ } $>
+			<$- helpers.button("Rotate ships", { type: 'outlined', light: true, icon: 'rotate_right', classes: [ 'shp-game-ship-case__rotate-button' ] }); $>
 		</ul>
+		<div class='shp-game-targeting'>
+			<div class='input-field'>
+				<input type='text' id='shp-game-targeting__input' class='active' name='target' autocomplete='off' autocorrect='off' spellcheck='false' />
+				<label for='target'>Tile to target</label>
+			</div>
+			<$- helpers.button("Fire", { type: 'outlined', light: true, icon: 'call_made', classes: [ 'shp-game-targeting__fire-button' ] }) $>
+		</div>
 	</body>
 </html>

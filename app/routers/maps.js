@@ -8,6 +8,7 @@ const controller = require('../controllers/maps.js');
 
 
 router.get('/', controller.index);
+router.get('/new', controller.new);
 
 
 module.exports = router;

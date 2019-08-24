@@ -16,7 +16,7 @@
 	color: $white-text-color-1;
 	user-select: none;
 
-	.shp-header__row {
+	@at-root .shp-header__row {
 		position: relative;
 		z-index: $z-index-header;
 		box-sizing: border-box;

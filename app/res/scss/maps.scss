@@ -1,8 +1,13 @@
 /// ShipShape  >  scss  >  maps
 /// 	Style the maps list page.
 
+@import 'colors';
 @import 'typography';
 
+
+.shp-card.shp-maps {
+	margin-bottom: 68px;
+}
 
 .shp-map {
 	position: relative;
@@ -32,5 +37,62 @@
 	}
 	.shp-map__description {
 		margin: 0px;
+	}
+}
+
+.shp-map-create-button-container {
+	position: fixed;
+	left: 0px;
+	bottom: 0px;
+	right: 0px;
+	
+	margin: 0px 24px 16px;
+	@media (min-width: 840px) {
+		margin: 0px 48px 16px;
+	}
+	
+	text-align: right;
+	
+	pointer-events: none;
+	
+	.shp-map-create-button {
+		display: inline-block;
+		
+		pointer-events: auto;
+	}
+}
+
+.shp-map-editor {
+	.shp-map-editor__scrollbox {
+		overflow-x: scroll;
+		
+		text-align: center;
+		
+		.shp-map-editor__board-container {
+			display: inline-block;
+			
+			.shp-game-board__column-header, .shp-game-board__row-header {
+				color: $black-text-color-1;
+				
+				div > span {
+					display: inline-block;
+					
+					min-width: 1ch;
+					
+					padding-bottom: 1px;
+					
+					border-bottom: 1px solid $black-divider-color;
+					outline: 0px none;
+					
+					transition: border 300ms, padding 300ms;
+					
+					&:focus {
+						padding-bottom: 0px;
+						
+						border-bottom: 2px solid $accent-color;
+					}
+				}
+			}
+		}
 	}
 }

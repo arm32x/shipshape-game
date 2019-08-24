@@ -8,8 +8,10 @@ const controller = require('../controllers/game.js');
 
 
 router.get('/new', controller.new);
+router.get('/join', controller.join);
 
 router.post('/', controller.create);
+router.post('/join', controller.join2);
 
 router.get('/:id', controller.show);
 
