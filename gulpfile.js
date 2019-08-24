@@ -1,6 +1,10 @@
 /// ShipShape -> gulpfile.js
 /// 	Handles compilation of assets and watching files for recompilation.
 
+
+// Determine whether or not we are running in a development environment.
+let dev = process.env.NODE_ENV != 'production';
+
 const gulp         = require('gulp');
 
 const sass         = require('gulp-sass');
@@ -11,10 +15,6 @@ const babel        = require('gulp-babel');
 const concat       = require('gulp-concat');
 const sourcemaps   = dev ? require('gulp-sourcemaps') : undefined;
 const noop         = require('gulp-noop');
-
-
-// Determine whether or not we are running in a development environment.
-let dev = process.env.NODE_ENV != 'production';
 
 // Build CSS files from SCSS files using the 'node-sass-import-once' importer.
 gulp.task('build-css', () =>
