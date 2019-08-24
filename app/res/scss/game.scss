@@ -327,7 +327,7 @@
 	line-height: 0px;
 	text-align: center;
 	
-	.shp-game--opponent-turn & {
+	@at-root .shp-game--opponent-turn .shp-game-targeting {
 		display: none;
 	}
 	
