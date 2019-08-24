@@ -79,5 +79,5 @@ gulp.task('watch', () => {
 });
 
 // Build all files and then start watching files (if in development).
-gulp.task('default', gulp.series('build', dev ? 'watch' : undefined));
+gulp.task('default', gulp.series('build', dev ? 'watch' : () => { })));
 
