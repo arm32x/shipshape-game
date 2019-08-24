@@ -44,7 +44,7 @@
     "gulp-sourcemaps": "^2.6.4"
   },
   "scripts": {
-    "start": "./server.sh"
+    "start": "/bin/sh server.sh"
   },
   "browserslist": [
     ">0.5%",
