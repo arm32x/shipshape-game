@@ -9,7 +9,7 @@ const autoprefixer = require('gulp-autoprefixer');
 const babel        = require('gulp-babel');
 
 const concat       = require('gulp-concat');
-const sourcemaps   = require('gulp-sourcemaps');
+const sourcemaps   = dev ? require('gulp-sourcemaps') : undefined;
 const noop         = require('gulp-noop');
 
 
