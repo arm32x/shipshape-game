@@ -9,5 +9,7 @@ const controller = require('../controllers/index.js');
 
 router.get('/', controller.index);
 
+router.get('/credits', controller.credits);
+
 
 module.exports = router;

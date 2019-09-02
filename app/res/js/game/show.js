@@ -288,6 +288,8 @@ if (document.getElementsByClassName('shp-game').length > 0) {
 		if (e.repeat || draggable.isDragging()) return;
 		if (e.key == 'r' || e.key == 'R') {
 			rotateShips();
+		} else if (e.code == 'Enter' && targetingInput == document.activeElement) {
+			fireButton.click();
 		}
 	}, true);
 	document.getElementsByClassName('shp-game-ship-case__rotate-button')[0].addEventListener('click', (e) => {

@@ -328,6 +328,7 @@ module.exports = {
 						nextTurn(false);
 						let nextTurnTimeout = undefined;
 						let targetPlayer = game.players[game.turn];
+						let hit = false;
 						checkTarget: {
 							for (let y = 0; y < game.map.targeting.length - 1; y++) {
 								for (let x = 0; x < game.map.targeting[y + 1].length - 1; x++) {
@@ -338,6 +339,7 @@ module.exports = {
 											targetPlayer.socket.emit('miss', { x: x, y: y, board: 'player' });
 											setTile(targetPlayer, x, y, 1, 4);
 										} else if (tile.x == 0 && tile.y == 4) {
+											hit = true;
 											socket.emit('hit', { x: x, y: y, board: 'opponent' });
 											targetPlayer.socket.emit('hit', { x: x, y: y, board: 'player' });
 											setTile(targetPlayer, x, y, 0, 4);
@@ -350,6 +352,7 @@ module.exports = {
 											targetPlayer.socket.emit('miss', { x: x, y: y, board: 'player' });
 											setTile(targetPlayer, x, y, 1, 4);
 										} else {
+											hit = true;
 											socket.emit('hit', { x: x, y: y, board: 'opponent' });
 											targetPlayer.socket.emit('hit', { x: x, y: y, board: 'player' });
 											setTile(targetPlayer, x, y, 0, 4);
@@ -413,6 +416,13 @@ module.exports = {
 								socket.emit('win');
 								targetPlayer.socket.emit('loss');
 							}, 2000);
+						}
+						
+						if (!hit && Math.random() < 0.0001) {
+							setTimeout(() => {
+								socket.emit('sunk', { type: 'fish' });
+								targetPlayer.socket.emit('sunk', { type: 'fish' } );
+							}, 1000);
 						}
 					});
 					
