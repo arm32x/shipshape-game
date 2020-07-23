@@ -14,7 +14,7 @@ const babel        = require('gulp-babel');
 
 const concat       = require('gulp-concat');
 const noop         = require('gulp-noop');
-const sourcemaps   = dev ? require('gulp-sourcemaps') : noop;
+const sourcemaps   = dev ? require('gulp-sourcemaps') : null;
 const uglify       = require('gulp-uglify');
 
 // Build CSS files from SCSS files using the 'node-sass-import-once' importer.
