@@ -25,13 +25,20 @@
 									<div><span contenteditable='true'>Row <$= y $></span></div>
 								</th>
 							<$ } else { $>
-								<td class='shp-game-board__tile shp-game-board__tile--0-5' data-x='<$= x - 1 $>' data-y='<$= y - 1 $>'></td>
+								<td class='shp-game-board__tile shp-game-board__tile--0-5 shp-map-editor__tile' data-x='<$= x - 1 $>' data-y='<$= y - 1 $>'></td>
 							<$ } $>
 						<$ } $>
 					</tr>
 				<$ } $>
 			</table>
-			
+			<div class='shp-map-editor__column-resize-buttons'>
+				<$- helpers.iconButton('add', { classes: [ 'shp-map-editor__resize-button' ], attributes: { id: 'shp-map-editor__add-column-button' } }); $>
+				<$- helpers.iconButton('remove', { classes: [ 'shp-map-editor__resize-button' ], attributes: { id: 'shp-map-editor__remove-column-button' } }); $>
+			</div>
+			<div class='shp-map-editor__row-resize-buttons'>
+				<$- helpers.iconButton('add', { classes: [ 'shp-map-editor__resize-button' ], attributes: { id: 'shp-map-editor__add-row-button' } }); $>
+				<$- helpers.iconButton('remove', { classes: [ 'shp-map-editor__resize-button' ], attributes: { id: 'shp-map-editor__remove-row-button' } }); $>
+			</div>
 		</div>
 	</main>
 </div>

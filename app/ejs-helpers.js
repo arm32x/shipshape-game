@@ -30,6 +30,20 @@ module.exports = {
 			attributes: { href },
 			classes: [ 'shp-navigation__item' ].concat(buttonOptions.classes).join(' ').replace(/\s+/g, ' ').trim()
 		}));
+	},
+	iconButton(icon, { element = 'button', light = false, classes = [ ], attributes = { } } = { }) {
+		return HTMLTag(
+			element, {
+				...attributes,
+				class: [
+					'shp-icon-button',
+					light ? 'shp-icon-button--light' : ''
+				].concat(classes).join(' ').replace(/\s+/g, ' ').trim()
+			}, [
+				HTMLTag('i', { class: 'shp-icon-button__icon material-icons' }, icon),
+				HTMLTag('span', { class: 'rippleJS' })
+			].join('')
+		);
 	}
 };
 

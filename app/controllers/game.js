@@ -137,11 +137,11 @@ module.exports = {
 						let boardHeight = game.map.targeting.length - 1;
 						if (player.board == undefined) player.board = Array.from({ length: boardHeight }, () => Array(boardWidth).fill({ x: 0, y: 5 }));
 						
-						if (!vertical && shipData.x > boardWidth  - shipLength) {
+						if (!vertical && shipData.x > boardWidth - shipLength) {
 							console.log("Player with ID " + socket.id + " attempted to place a ship in an invalid position.");
 							socket.emit('ship error', shipData);
 							return;
-						} else if ( vertical && shipData.y > boardHeight - shipLength) {
+						} else if (vertical && shipData.y > boardHeight - shipLength) {
 							console.log("Player with ID " + socket.id + " attempted to place a ship in an invalid position.");
 							socket.emit('ship error', shipData);
 							return;

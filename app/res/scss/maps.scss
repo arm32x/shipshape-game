@@ -4,7 +4,6 @@
 @import 'colors';
 @import 'typography';
 
-
 .shp-card.shp-maps {
 	margin-bottom: 68px;
 }
@@ -64,12 +63,22 @@
 
 .shp-map-editor {
 	.shp-map-editor__scrollbox {
-		overflow-x: scroll;
+		overflow-x: auto;
+		overflow-y: hidden;
+
+		position: relative;
 		
 		text-align: center;
+		white-space: nowrap;
 		
 		.shp-map-editor__board-container {
 			display: inline-block;
+
+			.shp-map-editor__board {
+				display: inline-table;
+
+				margin-bottom: 0px;
+			}
 			
 			.shp-game-board__column-header, .shp-game-board__row-header {
 				color: $black-text-color-1;
@@ -92,6 +101,37 @@
 						border-bottom: 2px solid $accent-color;
 					}
 				}
+			}
+		}
+
+		.shp-map-editor__column-resize-buttons {
+			display: inline-flex;
+			flex-direction: column;
+			justify-content: center;
+
+			position: absolute;
+			
+			height: 100%;
+
+			margin-left: -138px;
+			padding: 2px;
+
+			.shp-map-editor__resize-button {
+				margin: 2px;
+			}
+		}
+
+		.shp-map-editor__row-resize-buttons {
+			display: flex;
+			flex-direction: row;
+			justify-content: center;
+
+			margin-top: 6px;
+			margin-bottom: 86px;
+			padding: 2px;
+
+			.shp-map-editor__resize-button {
+				margin: 2px;
 			}
 		}
 	}
