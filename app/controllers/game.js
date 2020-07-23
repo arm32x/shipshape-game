@@ -323,7 +323,7 @@ module.exports = {
 					socket.on('fire', (target) => {
 						if (game.turn != socket.id) return;
 						
-						console.log("Player with id " + socket.id + " fired at " + target + ".");
+						console.log("Player with ID " + socket.id + " fired at " + target + ".");
 						
 						nextTurn(false);
 						let nextTurnTimeout = undefined;
