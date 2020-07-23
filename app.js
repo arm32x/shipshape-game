@@ -46,4 +46,6 @@ for (let index = 0; index < Object.keys(routers).length; index++) {
 app.use('/res', express.static(path.join(__dirname, 'res')));
 
 // Listen on port 8080, or what is specified in the PORT environment variable.
-let server = app.listen(process.env.PORT || 8080);
+let port = process.env.PORT || 8080;
+let server = app.listen(port);
+console.log(`Running ShipShape server on port ${port}.`)
