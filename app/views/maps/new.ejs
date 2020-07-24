@@ -18,11 +18,11 @@
 								<th></th>
 							<$ } else if (x > 0 && y == 0) { $>
 								<th class='shp-game-board__column-header'>
-									<div><span contenteditable='true'>Column <$= x $></span></div>
+									<div><span contenteditable='true' class='shp-map-editor__editbox'>Column <$= x $></span></div>
 								</th>
 							<$ } else if (x == 0 && y > 0) { $>
 								<th class='shp-game-board__row-header'>
-									<div><span contenteditable='true'>Row <$= y $></span></div>
+									<div><span contenteditable='true' class='shp-map-editor__editbox'>Row <$= y $></span></div>
 								</th>
 							<$ } else { $>
 								<td class='shp-game-board__tile shp-game-board__tile--0-5 shp-map-editor__tile' data-x='<$= x - 1 $>' data-y='<$= y - 1 $>'></td>
