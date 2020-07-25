@@ -9,6 +9,7 @@ function deselectTile() {
         selectedTile.classList.replace("shp-game-board__tile--2-5", "shp-game-board__tile--1-5");
     }
 }
+
 function selectTile(tile) {
     deselectTile();
     tile.id = "shp-map-editor__tile--selected";
@@ -16,17 +17,26 @@ function selectTile(tile) {
     tile.classList.replace("shp-game-board__tile--1-5", "shp-game-board__tile--2-5");
 }
 
+function selectTileEventListener(e) {
+    selectTile(this);
+    e.stopPropagation();
+}
+
 function updateTileEventListeners() {
     console.log("tiles updated");
     let tiles = document.getElementsByClassName("shp-map-editor__tile");
     for (let tile of tiles) {
-        tile.onclick = (e) => {
-            selectTile(tile);
-        };
+        tile.addEventListener("click", selectTileEventListener);
     }
 }
 
 updateTileEventListeners();
+// Detect if we are on the map editor page.
+if (document.getElementsByClassName("shp-map-editor").length > 0) {
+    document.addEventListener("click", (e) => {
+        deselectTile();
+    });
+}
 
 let addColumnButton = document.getElementById("shp-map-editor__add-column-button");
 if (addColumnButton) {
