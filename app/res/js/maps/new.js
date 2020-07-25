@@ -1,13 +1,39 @@
 /// ShipShape  >  res  >  js  >  maps  >  new
 ///		 Controls the map editor on the client side.
 
+function deselectTile() {
+    let selectedTile = document.getElementById("shp-map-editor__tile--selected");
+    if (selectedTile) {
+        selectedTile.id = "";
+        selectedTile.classList.replace("shp-game-board__tile--2-4", "shp-game-board__tile--0-5");
+        selectedTile.classList.replace("shp-game-board__tile--2-5", "shp-game-board__tile--1-5");
+    }
+}
+function selectTile(tile) {
+    deselectTile();
+    tile.id = "shp-map-editor__tile--selected";
+    tile.classList.replace("shp-game-board__tile--0-5", "shp-game-board__tile--2-4");
+    tile.classList.replace("shp-game-board__tile--1-5", "shp-game-board__tile--2-5");
+}
+
+function updateTileEventListeners() {
+    console.log("tiles updated");
+    let tiles = document.getElementsByClassName("shp-map-editor__tile");
+    for (let tile of tiles) {
+        tile.onclick = (e) => {
+            selectTile(tile);
+        };
+    }
+}
+
+updateTileEventListeners();
+
 let addColumnButton = document.getElementById("shp-map-editor__add-column-button");
 if (addColumnButton) {
     addColumnButton.addEventListener("click", (e) => {
         let gameBoard = document.getElementsByClassName("shp-map-editor__board")[0];
         let boardBody = gameBoard.getElementsByTagName("tbody")[0];
         let currentWidth = boardBody.children[1].children.length - 1;
-        let currentHeight = boardBody.children.length - 1;
 
         for (let [ index, row ] of Array.from(boardBody.children).entries()) {
             if (index == 0) {
@@ -16,6 +42,7 @@ if (addColumnButton) {
                 row.insertAdjacentHTML("beforeend", "<td class='shp-game-board__tile shp-game-board__tile--0-5 shp-map-editor__tile' data-x='" + currentWidth + "' data-y='" + (index - 1) + "'></td>");
             }
         }
+        updateTileEventListeners();
     });
 }
 
@@ -50,6 +77,7 @@ if (addRowButton) {
         }
 
         boardBody.appendChild(row);
+        updateTileEventListeners();
     });
 }
 

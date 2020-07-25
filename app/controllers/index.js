@@ -1,5 +1,5 @@
 /// ShipShape  >  controllers  >  index
-/// 	Handle serving ungategorized pages.
+/// 	Handle serving uncategorized pages.
 
 module.exports = {
 	
