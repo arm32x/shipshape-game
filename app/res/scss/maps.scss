@@ -107,6 +107,8 @@
 			}
 
 			.shp-map-editor__tile {
+				outline: none;
+
 				transition: box-shadow 150ms $standard;
 
 				&#shp-map-editor__tile--selected {

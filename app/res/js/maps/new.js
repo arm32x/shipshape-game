@@ -25,17 +25,12 @@ function selectTileEventListener(e) {
 function updateTileEventListeners() {
     let tiles = document.getElementsByClassName("shp-map-editor__tile");
     for (let tile of tiles) {
-        tile.addEventListener("click", selectTileEventListener);
+        tile.addEventListener("focus", selectTileEventListener);
+        tile.addEventListener("blur", deselectTile);
     }
 }
 
 updateTileEventListeners();
-// Detect if we are on the map editor page.
-if (document.getElementsByClassName("shp-map-editor").length > 0) {
-    document.addEventListener("click", (e) => {
-        deselectTile();
-    });
-}
 
 let addColumnButton = document.getElementById("shp-map-editor__add-column-button");
 if (addColumnButton) {
@@ -48,7 +43,7 @@ if (addColumnButton) {
             if (index == 0) {
                 row.insertAdjacentHTML('beforeend', "<th class='shp-game-board__column-header'><div><span contenteditable='true' class='shp-map-editor__editbox'>Column " + (currentWidth + 1) + "</span></div></th>");
             } else {
-                row.insertAdjacentHTML("beforeend", "<td class='shp-game-board__tile shp-game-board__tile--0-5 shp-map-editor__tile' data-x='" + currentWidth + "' data-y='" + (index - 1) + "'></td>");
+                row.insertAdjacentHTML("beforeend", "<td class='shp-game-board__tile shp-game-board__tile--0-5 shp-map-editor__tile' data-x='" + currentWidth + "' data-y='" + (index - 1) + "' tabindex='0'></td>");
             }
         }
         updateTileEventListeners();
@@ -82,7 +77,7 @@ if (addRowButton) {
         row.innerHTML = "<th class='shp-game-board__row-header'><div><span contenteditable='true' class='shp-map-editor__editbox'>Row " + (currentHeight + 1) + "</span></div></th>";
 
         for (let index = 0; index < currentWidth; index++) {
-            row.insertAdjacentHTML("beforeend", "<td class='shp-game-board__tile shp-game-board__tile--0-5 shp-map-editor__tile' data-x='" + index + "' data-y='" + currentHeight + "'></td>");
+            row.insertAdjacentHTML("beforeend", "<td class='shp-game-board__tile shp-game-board__tile--0-5 shp-map-editor__tile' data-x='" + index + "' data-y='" + currentHeight + "' tabindex='0'></td>");
         }
 
         boardBody.appendChild(row);
