@@ -2,6 +2,8 @@
 /// 	Style the maps list page.
 
 @import 'colors';
+@import 'easing';
+@import 'elevation';
 @import 'typography';
 
 .shp-card.shp-maps {
@@ -91,17 +93,46 @@
 					
 					min-width: 1ch;
 					
-					padding-bottom: 1px;
-					
 					border-bottom: 1px solid $black-divider-color;
 					outline: 0px none;
 					
-					transition: border 300ms, padding 300ms;
+					transition: border 300ms $standard, box-shadow 300ms $standard;
 					
 					&:focus {
-						padding-bottom: 0px;
-						
-						border-bottom: 2px solid $accent-color;
+						border-bottom: 1px solid $accent-color;
+
+						box-shadow: 0px 1px 0px 0px $accent-color;
+					}
+				}
+			}
+
+			.shp-map-editor__tile {
+				transition: box-shadow 150ms $standard;
+
+				&#shp-map-editor__tile--selected {
+					z-index: 2;
+					
+					box-shadow: inset 0px 0px 0px 2px $accent-color, 0px 0px 8px 0px $accent-color;
+
+					transition: box-shadow 75ms $standard;
+				}
+
+				$hover-effects: false;
+				@if $hover-effects {
+					&:active:active {
+						z-index: 1;
+
+						box-shadow: inset 0px 0px 0px 1px $accent-color, 0px 0px 2px 0px $accent-color;
+
+						transition: box-shadow 75ms $standard;
+					}
+
+					&:hover {
+						z-index: 1;
+
+						box-shadow: inset 0px 0px 2px 0px $accent-color, 0px 0px 2px 0px $accent-color;
+
+						transition: box-shadow 0ms $standard;
 					}
 				}
 			}

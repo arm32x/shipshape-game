@@ -5,16 +5,16 @@ function deselectTile() {
     let selectedTile = document.getElementById("shp-map-editor__tile--selected");
     if (selectedTile) {
         selectedTile.id = "";
-        selectedTile.classList.replace("shp-game-board__tile--2-4", "shp-game-board__tile--0-5");
-        selectedTile.classList.replace("shp-game-board__tile--2-5", "shp-game-board__tile--1-5");
+        // selectedTile.classList.replace("shp-game-board__tile--2-4", "shp-game-board__tile--0-5");
+        // selectedTile.classList.replace("shp-game-board__tile--2-5", "shp-game-board__tile--1-5");
     }
 }
 
 function selectTile(tile) {
     deselectTile();
     tile.id = "shp-map-editor__tile--selected";
-    tile.classList.replace("shp-game-board__tile--0-5", "shp-game-board__tile--2-4");
-    tile.classList.replace("shp-game-board__tile--1-5", "shp-game-board__tile--2-5");
+    // tile.classList.replace("shp-game-board__tile--0-5", "shp-game-board__tile--2-4");
+    // tile.classList.replace("shp-game-board__tile--1-5", "shp-game-board__tile--2-5");
 }
 
 function selectTileEventListener(e) {
@@ -23,7 +23,6 @@ function selectTileEventListener(e) {
 }
 
 function updateTileEventListeners() {
-    console.log("tiles updated");
     let tiles = document.getElementsByClassName("shp-map-editor__tile");
     for (let tile of tiles) {
         tile.addEventListener("click", selectTileEventListener);
