@@ -1,0 +1,37 @@
+@import 'colors';
+@import 'easing';
+
+.shp-editbox {
+    display: inline-block;
+    
+    min-width: 1ch;
+    min-height: 1em;
+    
+    border-bottom: 1px solid $black-divider-color;
+    outline: 0px none;
+    
+    transition: border 300ms $standard, box-shadow 300ms $standard;
+    
+    &:focus {
+        border-bottom: 1px solid $accent-color;
+
+        box-shadow: 0px 1px 0px 0px $accent-color;
+    }
+
+    &.shp-editbox--white {
+        border-bottom: 1px solid $white-divider-color;
+
+        &:focus {
+            border-bottom: 1px solid $accent-color;
+            
+            box-shadow: 0px 1px 0px 0px $accent-color;
+        }
+    }
+
+    // This fixes a bug where editboxes get bigger when they are empty.
+    &:empty::after {
+        content: "0";
+        
+        color: transparent;
+    }
+}

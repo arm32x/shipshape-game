@@ -5,16 +5,12 @@ function deselectTile() {
     let selectedTile = document.getElementById("shp-map-editor__tile--selected");
     if (selectedTile) {
         selectedTile.id = "";
-        // selectedTile.classList.replace("shp-game-board__tile--2-4", "shp-game-board__tile--0-5");
-        // selectedTile.classList.replace("shp-game-board__tile--2-5", "shp-game-board__tile--1-5");
     }
 }
 
 function selectTile(tile) {
     deselectTile();
     tile.id = "shp-map-editor__tile--selected";
-    // tile.classList.replace("shp-game-board__tile--0-5", "shp-game-board__tile--2-4");
-    // tile.classList.replace("shp-game-board__tile--1-5", "shp-game-board__tile--2-5");
 }
 
 function selectTileEventListener(e) {
@@ -41,7 +37,7 @@ if (addColumnButton) {
 
         for (let [ index, row ] of Array.from(boardBody.children).entries()) {
             if (index == 0) {
-                row.insertAdjacentHTML('beforeend', "<th class='shp-game-board__column-header'><div><span contenteditable='true' class='shp-map-editor__editbox'>Column " + (currentWidth + 1) + "</span></div></th>");
+                row.insertAdjacentHTML('beforeend', "<th class='shp-game-board__column-header'><div><span contenteditable='true' class='shp-editbox'>Column " + (currentWidth + 1) + "</span></div></th>");
             } else {
                 row.insertAdjacentHTML("beforeend", "<td class='shp-game-board__tile shp-game-board__tile--0-5 shp-map-editor__tile' data-x='" + currentWidth + "' data-y='" + (index - 1) + "' tabindex='0'></td>");
             }
@@ -74,7 +70,7 @@ if (addRowButton) {
         let currentHeight = boardBody.children.length - 1;
 
         let row = document.createElement("tr");
-        row.innerHTML = "<th class='shp-game-board__row-header'><div><span contenteditable='true' class='shp-map-editor__editbox'>Row " + (currentHeight + 1) + "</span></div></th>";
+        row.innerHTML = "<th class='shp-game-board__row-header'><div><span contenteditable='true' class='shp-editbox'>Row " + (currentHeight + 1) + "</span></div></th>";
 
         for (let index = 0; index < currentWidth; index++) {
             row.insertAdjacentHTML("beforeend", "<td class='shp-game-board__tile shp-game-board__tile--0-5 shp-map-editor__tile' data-x='" + index + "' data-y='" + currentHeight + "' tabindex='0'></td>");

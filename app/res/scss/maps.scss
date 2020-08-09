@@ -79,31 +79,11 @@
 			.shp-map-editor__board {
 				display: inline-table;
 
-				position: relative;
-				z-index: 1;
-
 				margin-bottom: 0px;
 			}
 			
 			.shp-game-board__column-header, .shp-game-board__row-header {
 				color: $black-text-color-1;
-				
-				.shp-map-editor__editbox {
-					display: inline-block;
-					
-					min-width: 1ch;
-					
-					border-bottom: 1px solid $black-divider-color;
-					outline: 0px none;
-					
-					transition: border 300ms $standard, box-shadow 300ms $standard;
-					
-					&:focus {
-						border-bottom: 1px solid $accent-color;
-
-						box-shadow: 0px 1px 0px 0px $accent-color;
-					}
-				}
 			}
 
 			.shp-map-editor__tile {
@@ -169,6 +149,11 @@
 			.shp-map-editor__resize-button {
 				margin: 2px;
 			}
+		}
+
+		#shp-map-editor__targeting-tooltip {
+			font-family: $monospace-fonts;
+			font-size: to-rem(14px);
 		}
 	}
 }
