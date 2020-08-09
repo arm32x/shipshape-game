@@ -1,30 +1,41 @@
 /// ShipShape  >  res  >  js  >  maps  >  new
 ///		 Controls the map editor on the client side.
 
-function deselectTile() {
+let tooltip = document.getElementById("shp-map-editor__targeting-tooltip");
+let tooltipEditbox = document.getElementById("shp-map-editor__tooltip-editbox");
+
+function deselectTile(e) {
     let selectedTile = document.getElementById("shp-map-editor__tile--selected");
+    if (e && e.target && e.target == selectedTile) {
+        return;
+    }
     if (selectedTile) {
         selectedTile.id = "";
     }
+    tooltip.classList.remove("shp-tooltip--visible");
 }
 
 function selectTile(tile) {
     deselectTile();
     tile.id = "shp-map-editor__tile--selected";
+    tooltip.classList.add("shp-tooltip--visible");
+    tooltip.style.left = (tile.offsetLeft + 16) + "px";
+    tooltip.style.top = (tile.offsetTop + 32) + "px";
+    tooltipEditbox.focus();
 }
 
 function selectTileEventListener(e) {
     selectTile(this);
-    e.stopPropagation();
+    e.stopImmediatePropagation();
 }
 
 function updateTileEventListeners() {
     let tiles = document.getElementsByClassName("shp-map-editor__tile");
     for (let tile of tiles) {
-        tile.addEventListener("click", selectTileEventListener);
+        //tile.addEventListener("click", selectTileEventListener);
         tile.addEventListener("focus", selectTileEventListener);
     }
-    let headerEditboxes = document.querySelectorAll(".shp-game-board__column-header, .shp-editbox, .shp-game-board__row-header .shp-editbox");
+    let headerEditboxes = document.querySelectorAll(".shp-game-board__column-header .shp-editbox, .shp-game-board__row-header .shp-editbox");
     for (let editbox of headerEditboxes) {
         editbox.addEventListener("focus", deselectTile);
     }
@@ -37,9 +48,10 @@ function updateTileEventListeners() {
 updateTileEventListeners();
 // Detect if we are on the map editor page.
 if (document.getElementsByClassName("shp-map-editor").length > 0) {
-    document.addEventListener("click", (e) => {
-        deselectTile();
-    });
+    document.addEventListener("click", deselectTile);
+    tooltip.addEventListener("click", (e) => {
+        e.stopPropagation();
+    })
 }
 
 let addColumnButton = document.getElementById("shp-map-editor__add-column-button");

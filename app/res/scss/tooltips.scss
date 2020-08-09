@@ -5,6 +5,7 @@
 .shp-tooltip {
     position: absolute;
     // The tooltip will be positioned through JavaScript.
+    z-index: 5;
 
     text-align: center;
     
@@ -23,13 +24,25 @@
         transition: opacity 150ms $decelerate, visibility 150ms $decelerate;
     }
 
+    &.shp-tooltip--moving {
+        transition: opacity 150ms $accelerate, visibility 150ms $accelerate, top 150ms $standard, right 150ms $standard, bottom 150ms $standard, left 150ms $standard;
+
+        &.shp-tooltip--visible {
+            transition: opacity 150ms $decelerate, visibility 150ms $decelerate, top 150ms $standard, right 150ms $standard, bottom 150ms $standard, left 150ms $standard;
+        }
+    }
+
     .shp-tooltip__inner {
+        position: relative;
+        left: -50%;
+        top: 4px;
+
         min-width: 48px;
 
         padding: 4px 8px;
 
         border-radius: 4px;
 
-        background-color: $black-text-color-1;
+        background-color: $black-text-color-2;
     }
 }

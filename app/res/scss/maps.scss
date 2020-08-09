@@ -154,7 +154,7 @@
 		#shp-map-editor__targeting-tooltip {
 			font-family: $monospace-fonts;
 
-			@at-root #shp-map-editor__tooltip-editbox {
+			#shp-map-editor__tooltip-editbox {
 				min-width: 48px;
 			}
 		}
