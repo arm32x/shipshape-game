@@ -11,6 +11,8 @@
     outline: 0px none;
     
     transition: border 300ms $standard, box-shadow 300ms $standard;
+
+    cursor: text;
     
     &:focus {
         border-bottom: 1px solid $accent-color;

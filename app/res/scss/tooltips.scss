@@ -1,11 +1,14 @@
 @import 'colors';
 @import 'easing';
+@import 'typography';
 
 .shp-tooltip {
     position: absolute;
     // The tooltip will be positioned through JavaScript.
+
+    text-align: center;
     
-    font-size: 12px;
+    font-size: to-rem(12px);
     color: #ffffff;
     
     opacity: 0;
@@ -21,9 +24,9 @@
     }
 
     .shp-tooltip__inner {
-        min-width: 32px;
+        min-width: 48px;
 
-        padding: 4px 16px;
+        padding: 4px 8px;
 
         border-radius: 4px;
 

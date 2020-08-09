@@ -79,5 +79,5 @@ html {
 
 ::selection {
 	color: inherit;
-	background-color: lighten($accent-color, 50%);
+	background-color: rgba($accent-color, 0.25);
 }
