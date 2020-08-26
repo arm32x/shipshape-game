@@ -3,6 +3,22 @@
 
 <$- include('../header', { title: "Map Editor" }); $>
 
+<div class='shp-map-info shp-card'>
+	<header class='shp-card__header shp-card__header--outlined'>
+		<i class='shp-card__icon material-icons'>description</i>
+		<span class='shp-card__title'>Map information</span>
+	</header>
+	<main class='mdl-grid'>
+		<div class='mdl-cell mdl-cell--12-col input-field'>
+			<input type='text' id='shp-map-title' value='Untitled' />
+			<label for='shp-map-title'>Title</label>
+		</div>
+		<div class='mdl-cell mdl-cell--12-col input-field'>
+			<textarea id='shp-map-description' class='materialize-textarea'>A new, untitled map.</textarea>
+			<label for='shp-map-description'>Description</label>
+		</div>
+	</main>
+</div>
 <div class='shp-map-editor shp-card'>
 	<header class='shp-card__header shp-card__header--outlined'>
 		<i class='shp-card__icon material-icons'>edit</i>
@@ -54,9 +70,12 @@
 	</header>
 	<main class='shp-map-ships'>
 		<$ [ "patrolBoat", "destroyer", "submarine", "battleship", "carrier" ].forEach(shipType => { $>
-			<div id='shp-ship-quantity--<$= shipType $>' class='shp-ship-quantity shp--monospace-fonts'>
-				<span class='shp-ship-quantity__ship shp-ship shp-ship--<$= shipType $> shp-ship--facing-right'></span>
-				<span contenteditable class='shp-ship-quantity__editbox shp-editbox'>g</span>
+			<div class='shp-map-ship'>
+				<span class='shp-map-ship__ship shp-ship shp-ship--<$= shipType $> shp-ship--facing-right'></span>
+				<div class='shp-map-ship__input-field input-field'>
+					<input type='text' id='shp-map-ship__input--<$= shipType $>' class='shp-map-ship__input shp--monospace-fonts' placeholder='0' value='0' min='0' />
+					<label for='shp-map-ship__input--<$= shipType $>'><$= shipType == "patrolBoat" ? "Patrol Boat" : shipType[0].toUpperCase() + shipType.slice(1) $></label>
+				</div>
 			</div>
 		<$ }); $>
 	</main>

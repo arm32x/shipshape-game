@@ -156,23 +156,12 @@
 	align-items: center;
 }
 
-.shp-ship-quantity {
+.shp-map-ship {
 	margin: 0px 16px;
 
 	line-height: 32px;
 
-	.shp-ship-quantity__ship {
+	.shp-map-ship__ship {
 		vertical-align: bottom;
-	}
-
-	.shp-ship-quantity__editbox {
-		&::before {
-			content: "× ";
-		}
-		&:empty::after {
-			content: "0";
-
-			color: $black-text-color-2;
-		}
 	}
 }

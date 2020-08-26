@@ -166,3 +166,26 @@ if (removeRowButton) {
         }
     });
 }
+
+let shipInputs = document.getElementsByClassName("shp-map-ship__input");
+for (let shipInput of shipInputs) {
+    for (let event of ["input", "keydown", "keyup", "mousedown", "mouseup", "select", "contextmenu", "drop"]) {
+        shipInput.addEventListener(event, function(e) {
+            if (/^\d*$/i.test(this.value)) {
+                this.oldValue = this.value;
+                this.oldSelectionStart = this.selectionStart;
+                this.oldSelectionEnd = this.selectionEnd;
+            } else if (this.hasOwnProperty("oldValue")) {
+                this.value = this.oldValue;
+                this.setSelectionRange(this.oldSelectionStart, this.oldSelectionEnd);
+            }
+        });
+    }
+    shipInput.addEventListener("blur", function(e) {
+        if (this.value == "") {
+            this.value = "0";
+        } else {
+            this.value = parseInt(this.value);
+        }
+    });
+}
