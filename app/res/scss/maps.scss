@@ -89,33 +89,20 @@
 			.shp-map-editor__tile {
 				outline: none;
 
-				transition: box-shadow 150ms $standard;
+				transition: box-shadow 150ms $standard, opacity 150ms $standard;
+				
+				opacity: 1;
 
 				&#shp-map-editor__tile--selected {
 					z-index: 2;
-					
+
 					box-shadow: inset 0px 0px 0px 2px $accent-color, 0px 0px 8px 0px $accent-color;
 
-					transition: box-shadow 75ms $standard;
+					transition: box-shadow 75ms $standard, opacity 150ms $standard;
 				}
 
-				$hover-effects: false;
-				@if $hover-effects {
-					&:active:active {
-						z-index: 1;
-
-						box-shadow: inset 0px 0px 0px 1px $accent-color, 0px 0px 2px 0px $accent-color;
-
-						transition: box-shadow 75ms $standard;
-					}
-
-					&:hover {
-						z-index: 1;
-
-						box-shadow: inset 0px 0px 2px 0px $accent-color, 0px 0px 2px 0px $accent-color;
-
-						transition: box-shadow 0ms $standard;
-					}
+				&:not([data-targeting]), &[data-targeting=""] {
+					opacity: 0.75;
 				}
 			}
 		}
@@ -157,6 +144,35 @@
 			#shp-map-editor__tooltip-editbox {
 				min-width: 48px;
 			}
+		}
+	}
+}
+
+.shp-map-ships {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+}
+
+.shp-ship-quantity {
+	margin: 0px 16px;
+
+	line-height: 32px;
+
+	.shp-ship-quantity__ship {
+		vertical-align: bottom;
+	}
+
+	.shp-ship-quantity__editbox {
+		&::before {
+			content: "× ";
+		}
+		&:empty::after {
+			content: "0";
+
+			color: $black-text-color-2;
 		}
 	}
 }

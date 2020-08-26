@@ -6,7 +6,7 @@
 <div class='shp-map-editor shp-card'>
 	<header class='shp-card__header shp-card__header--outlined'>
 		<i class='shp-card__icon material-icons'>edit</i>
-			<span class='shp-card__title'>Map editor</span>
+		<span class='shp-card__title'>Map editor</span>
 	</header>
 	<main class='shp-map-editor__scrollbox'>
 		<div class='shp-map-editor__board-container'>
@@ -45,6 +45,20 @@
 				<span contenteditable id='shp-map-editor__tooltip-editbox' class='shp-editbox shp-editbox--white'></span>
 			</div>
 		</div>
+	</main>
+</div>
+<div class='shp-card'>
+	<header class='shp-card__header shp-card__header--outlined'>
+		<i class='shp-card__icon material-icons'>directions_boat</i>
+		<span class='shp-card__title'>Ships</span>
+	</header>
+	<main class='shp-map-ships'>
+		<$ [ "patrolBoat", "destroyer", "submarine", "battleship", "carrier" ].forEach(shipType => { $>
+			<div id='shp-ship-quantity--<$= shipType $>' class='shp-ship-quantity shp--monospace-fonts'>
+				<span class='shp-ship-quantity__ship shp-ship shp-ship--<$= shipType $> shp-ship--facing-right'></span>
+				<span contenteditable class='shp-ship-quantity__editbox shp-editbox'>g</span>
+			</div>
+		<$ }); $>
 	</main>
 </div>
 
