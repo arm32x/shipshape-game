@@ -65,25 +65,24 @@ module.exports = {
 				id: gameID,
 				map: maps[mapID],
 				io: io.of('/game/' + gameID),
-				players: { },
 				started: false,
 				maxPlayers: 2,
-				player1: undefined,
-				player2: undefined,
+				player1: { connected: false },
+				player2: { connected: false },
 				turn: undefined
 			};
 			console.log("Created game " + gameID + ".");
 			let game = games[gameID];
 			
 			let nextTurn = (signalPlayers = true) => {
-				if (game.turn == game.player1.socket.id) {
-					game.turn = game.player2.socket.id;
+				if (game.turn == 1) {
+					game.turn = 2;
 					if (signalPlayers) {
 						game.player1.socket.emit('opponent turn');
 						game.player2.socket.emit('player turn');
 					}
 				} else {
-					game.turn = game.player1.socket.id;
+					game.turn = 1;
 					if (signalPlayers) {
 						game.player1.socket.emit('player turn');
 						game.player2.socket.emit('opponent turn');
@@ -92,15 +91,44 @@ module.exports = {
 			};
 			
 			game.io.on('connection', (socket) => {
-				if (Object.keys(game.players).length < game.maxPlayers) {
+				if (!(game.player1.connected && game.player2.connected)) {
 					
 					console.log("Player with ID " + socket.id + " joined game " + gameID + ".");
-					game.players[socket.id] = { };
-					let player = game.players[socket.id];
-					player.socket = socket;
 					
-					if (Object.keys(game.players).length == 1) game.player1 = player;
-					if (Object.keys(game.players).length == 2) game.player2 = player, game.started = true;
+					let player = undefined;
+					let playerNo = undefined;
+					if (!game.player1.connected) {
+						console.log("Connected as player 1.");
+						game.player1.socket = socket;
+						game.player1.connected = true;
+						player = game.player1;
+						playerNo = 1;
+					} else if (!game.player2.connected) {
+						console.log("Connected as player 2.");
+						game.player2.socket = socket;
+						game.player2.connected = true;
+						player = game.player2;
+						playerNo = 2;
+					}
+					if (game.player1.connected && game.player2.connected) {
+						game.started = true;
+					}
+
+					if (player.ships != undefined) {
+						for (let ship of player.ships) {
+							socket.emit('ship place', { ...ship, removeShip: true });
+						}
+						if (deepEqual(player.shipCount, game.map.ships)) {
+							socket.emit('player ready');
+						}
+						if (game.turn == undefined) {
+
+						} else if (game.turn == playerNo) {
+							socket.emit('player turn');
+						} else {
+							socket.emit('opponent turn');
+						}
+					}
 					
 					let getTile = (player, x, y) => {
 						return player.board[y][x];
@@ -111,8 +139,14 @@ module.exports = {
 					
 					socket.on('disconnect', () => {
 						console.log("Player with ID " + socket.id + " left game " + gameID + ".");
-						delete game.players[socket.id];
-						if (game.started) {
+						if (game.player1.socket.id == socket.id) {
+							console.log("Player 1 disconnected.");
+							game.player1.connected = false;
+						} else if (game.player2.socket.id == socket.id) {
+							console.log("Player 2 disconnected.");
+							game.player2.connected = false;
+						}
+						if (!game.player1.connected && !game.player2.connected) {
 							console.log("An in-progress game was adbandoned.  Closing game.");
 							game.io.emit('game close');
 							delete io.nsps['/game/' + gameID];
@@ -321,13 +355,13 @@ module.exports = {
 					});
 
 					socket.on('fire', (target) => {
-						if (game.turn != socket.id) return;
+						if (socket.id != game["player" + game.turn].socket.id) return;
 						
 						console.log("Player with ID " + socket.id + " fired at " + target + ".");
 						
 						nextTurn(false);
 						let nextTurnTimeout = undefined;
-						let targetPlayer = game.players[game.turn];
+						let targetPlayer = game["player" + game.turn].socket.id;
 						let hit = false;
 						checkTarget: {
 							for (let y = 0; y < game.map.targeting.length - 1; y++) {
@@ -440,7 +474,11 @@ module.exports = {
 	show: [
 		function game_show(req, res, next) {
 			let game = games[req.params.id];
-			res.render('game/show', { game: game });
+			if (game) {
+				res.render('game/show', { game: game });
+			} else {
+				res.redirect('/game/join');
+			}
 		}
 	],
 	

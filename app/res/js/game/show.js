@@ -2,8 +2,11 @@
 ///		 Controls the main game on the client side.
 
 let statusBar = document.getElementsByClassName('shp-game-header__status')[0];
+function getStatus() {
+	return statusBar.textContent;
+}
 function setStatus(status) {
-	statusBar.innerText = status;
+	statusBar.textContent = status;
 }
 
 function getTile(board, x, y) {
@@ -41,6 +44,14 @@ function placeShip(shipData) {
 	let { x, y } = shipData;
 	let shipType = shipData.type;
 	let shipDirection = shipData.direction;
+
+	if (shipData.removeShip) {
+		let shipCase = document.getElementsByClassName('shp-game-ship-case')[0];
+		let ship = shipCase.getElementsByClassName('shp-ship--' + shipType)[0];
+		if (ship) {
+			shipCase.removeChild(ship);
+		}
+	}
 	
 	switch (shipType) {
 		case 'patrolBoat':
@@ -92,6 +103,7 @@ function placeShip(shipData) {
 				case 'up':
 					setTileGraphic(getTile('player', x, y),     2, 7);
 					setTileGraphic(getTile('player', x, y + 1), 2, 8);
+					let closed = false;
 					setTileGraphic(getTile('player', x, y + 2), 2, 9);
 					break;
 				case 'down':
@@ -207,6 +219,17 @@ if (document.getElementsByClassName('shp-game').length > 0) {
 	socket.on('game close', () => {
 		setStatus("This game has been closed.");
 		socket.disconnect();
+	});
+	let status = "";
+	socket.on('reconnecting', () => {
+		status = getStatus();
+		setStatus("Reconnecting...");
+	});
+	socket.on('reconnect', () => {
+		setStatus(status);
+	});
+	socket.on('disconnect', () => {
+		setStatus("Disconnected.  Try reloading the page.");
 	});
 	
 	socket.on('ship place', (shipData) => {
