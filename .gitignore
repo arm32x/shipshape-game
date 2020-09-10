@@ -2,3 +2,4 @@ node_modules/
 res/index.*
 .*.s??
 *.sublime-workspace
+app/data/maps.db

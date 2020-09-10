@@ -2,7 +2,7 @@
 	"0000-0000": {
 		"name": "Battleship",
 		"description": "The map from the original Battleship game.",
-		"thumbnail": "",
+		"author": 116672119483056467701,
 		"size": { "x": 10, "y": 10 },
 		"ships": { "carrier": 1, "battleship": 1, "submarine": 1, "destroyer": 1, "patrolBoat": 1 },
 		"targeting": [
@@ -22,7 +22,7 @@
 	"E29F-0B13": {
 		"name": "French Verb Conjugation",
 		"description": "Target other ships by conjugating verbs in French.",
-		"thumbnail": "",
+		"author": 116672119483056467701,
 		"size": { "x": 12, "y": 8 },
 		"ships": { "carrier": 1, "battleship": 1, "submarine": 1, "destroyer": 1, "patrolBoat": 1 },
 		"targeting": [
