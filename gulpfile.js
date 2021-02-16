@@ -17,6 +17,8 @@ const noop         = require('gulp-noop');
 const sourcemaps   = dev ? require('gulp-sourcemaps') : null;
 const uglify       = require('gulp-uglify');
 
+sass.compiler = require("node-sass");
+
 // Build CSS files from SCSS files using the 'node-sass-import-once' importer.
 gulp.task('build-css', () =>
 	gulp.src('app/res/scss/**/*.scss')
