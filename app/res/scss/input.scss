@@ -29,7 +29,7 @@
         
         height: 80px;
         
-        color: #9E9E9E;
+        color: #CBCBCB;
         font: to-rem(64px) $monospace-fonts;
         line-height: 80px;
 
@@ -40,4 +40,8 @@
             line-height: 64px;
         }
     }
+}
+
+input::placeholder {
+    color: $black-text-color-3;
 }
