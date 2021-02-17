@@ -8,6 +8,8 @@
 
 .shp-card {
 	@include material-elevation(2);
+	
+	height: min-content;
 
 	background-color: #FFFFFF;
 	

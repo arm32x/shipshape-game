@@ -6,8 +6,8 @@
 @import 'elevation';
 @import 'typography';
 
-
-.shp-button {
+// TODO: Make styles more accessible for keyboard-only users.
+.shp-button.shp-button {
 	box-sizing: border-box;
 	display: inline-block;
 	position: relative;

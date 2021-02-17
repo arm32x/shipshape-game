@@ -3,26 +3,14 @@
 
 <$- include('../header', { title: "Home" }); $>
 
-<div class='shp-maps shp-card'>
-	<header class='shp-card__header shp-card__header--outlined'>
-		<i class='shp-card__icon material-icons'>map</i>
-		<span class='shp-card__title'>Maps</span>
-	</header>
-	<div class='mdl-grid'>
-		<$ for (let map of maps) { $>
-			<div class='shp-map mdl-cell mdl-cell--4-col'>
-				<h4 class='shp-map__name'><$= map.name $></h4>
-				<span class='shp-map__id'><$= map._id $></span>
-				<p class='shp-map__description'><$= map.description $></p>
-				<$ if (map.ships.carrier * 5 + map.ships.battleship * 4 + map.ships.submarine * 3 + map.ships.destroyer * 3 + map.ships.patrolBoat * 2 > 20) { $>
-					<p class='shp-warning'>This map is not recommended for mobile devices.</p>
-				<$ } $>
-			</div>
-		<$ } $>
-	</div>
-	<div class='shp-map-create-button-container' style='display: none; /* Temporary. */'>
-		<$- helpers.navigationLink("Create map", '/maps/new', { type: 'contained', raised: true, icon: 'add', classes: [ 'shp-map-create-button' ] }) $>
-	</div>
+<div class="shp-maps mdl-grid">
+	<$ for (let map of maps) { $>
+		<div class="shp-map shp-card mdl-cell mdl-cell--4-col mdl-cell--3-col-desktop">
+			<span class="shp-map__id"><$= map._id $></span>
+			<h3 class="shp-map__name"><$= map.name $></h3>
+			<p class="shp-map__description"><$= map.description $></p>
+		</div>
+	<$ } $>
 </div>
 
 <$- include('../footer'); $>

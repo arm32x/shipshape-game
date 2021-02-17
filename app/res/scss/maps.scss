@@ -10,34 +10,23 @@
 	margin-bottom: 68px;
 }
 
-.shp-map {
-	position: relative;
+.shp-maps {
+	margin: -16px;
 	
-	.shp-map__image {
-		display: block;
+	.shp-map {
+		margin: 8px;
 		
-		background-color: #F5F5F5;
-		width: 100%;
-		padding-top: (9 / 16) * 100%;
-		background-size: cover;
-	}
-
-	.shp-map__name {
-		display: inline-block;
+		.shp-map__id {
+			font-family: $monospace-fonts;
+		}
 		
-		font: bold to-rem(16px) $body-text-fonts;
-		margin: 20px 0px 8px;
-	}
-	.shp-map__id {
-		display: inline-block;
-		position: absolute;
-		right: 0px;
+		.shp-map__name {
+			margin: 0px;
+		}
 		
-		font: to-rem(16px) $monospace-fonts;
-		text-transform: uppercase;
-	}
-	.shp-map__description {
-		margin: 0px;
+		.shp-map__actions {
+			margin-top: 0px;
+		}
 	}
 }
 
