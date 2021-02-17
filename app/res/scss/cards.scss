@@ -21,6 +21,13 @@
 
 	border-radius: 4px;
 	
+	&.shp-card--centered {
+		max-width: 640px;
+		
+		margin-left: auto;
+		margin-right: auto;
+	}
+	
 	.shp-card__header {
 		display: block;
 		box-sizing: border-box;
@@ -35,6 +42,10 @@
 			padding-bottom: 7px;
 		
 			border-bottom: 1px solid $black-divider-color;
+		}
+		
+		+ * > .input-field:first-child {
+			margin-top: 32px;
 		}
 	}
 	
@@ -68,6 +79,10 @@
 		line-height: 24px;
 		
 		margin: 0px;
+	}
+	
+	> :last-child > .input-field:last-child {
+		margin-bottom: 0px;
 	}
 }
 

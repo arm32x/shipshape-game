@@ -4,29 +4,22 @@
 <$- include('../header', { title: "New Game" }); $>
 
 <form action='/game' method='post'>
-	<div class='shp-card'>
+	<div class='shp-card shp-card--centered'>
 		<header class='shp-card__header shp-card__header--outlined'>
 			<i class='shp-card__icon material-icons'>map</i>
 			<span class='shp-card__title'>Map selection</span>
 		</header>
-		<main class='mdl-grid'>
-			<div class='mdl-cell mdl-cell--4-col input-field'>
-				<span id='shp-game-new__map-id-persistent-placeholder'>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;&nbsp;</span>
-				<input type='text' placeholder="XXXX XXXX" id='shp-game-new__map-id-input' name='map-id' class='shp--monospace-fonts active <$ if ('map-id' in errors) { $> invalid <$ } $>' style='text-transform: uppercase;' autocomplete='off' autocorrect='off' autocapitalize='characters' spellcheck='false' />
+		<main>
+			<div class='shp-id-input input-field'>
+				<span id='shp-game-new__map-id-persistent-placeholder' class='shp-id-input__placeholder'>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;&nbsp;</span>
+				<input type='text' placeholder="XXXX XXXX" id='shp-game-new__map-id-input' name='map-id' class='shp-id-input__input shp--monospace-fonts active <$ if ('map-id' in errors) { $> invalid <$ } $>' style='text-transform: uppercase;' autocomplete='off' autocorrect='off' autocapitalize='characters' spellcheck='false' />
 				<label for='map-id'>Map ID</label>
 			</div>
-			<aside class='mdl-cell mdl-cell--4-col mdl-cell--8-col-desktop'>
-				<p>
-					The <b>map ID</b> determines which map this game will be
-					played on.  Different maps have different sizes, ships, and
-					targeting systems.
+			<$ if ('map-id' in errors) { $>
+				<p class='shp--error'>
+					<$= errors['map-id'] $>
 				</p>
-				<$ if ('map-id' in errors) { $>
-					<p class='shp--error'>
-						<$= errors['map-id'] $>
-					</p>
-				<$ } $>
-			</aside>
+			<$ } $>
 		</main>
 	</div>
 

@@ -4,27 +4,22 @@
 <$- include('../header', { title: "Join Game" }); $>
 
 <form action='/game/join' method='post'>
-	<div class='shp-card'>
+	<div class='shp-card shp-card--centered'>
 		<header class='shp-card__header shp-card__header--outlined'>
 			<i class='shp-card__icon material-icons'>gamepad</i>
 			<span class='shp-card__title'>Game selection</span>
 		</header>
-		<main class='mdl-grid'>
-			<div class='mdl-cell mdl-cell--4-col input-field'>
-				<span id='shp-game-join__game-id-persistent-placeholder'>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;&nbsp;</span>
-				<input type='text' placeholder="XXXX XXXX" id='shp-game-join__game-id-input' name='game-id' class='shp--monospace-fonts active <$ if ('game-id' in errors) { $> invalid <$ } $>' style='text-transform: uppercase;' autocomplete='off' autocorrect='off' autocapitalize='characters' spellcheck='false' />
+		<main>
+			<div class='shp-id-input input-field'>
+				<span id='shp-game-join__game-id-persistent-placeholder' class='shp-id-input__placeholder'>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;&nbsp;</span>
+				<input type='text' placeholder="XXXX XXXX" id='shp-game-join__game-id-input' name='game-id' class='shp-id-input__input shp--monospace-fonts active <$ if ('game-id' in errors) { $> invalid <$ } $>' style='text-transform: uppercase;' autocomplete='off' autocorrect='off' autocapitalize='characters' spellcheck='false' />
 				<label for='game-id'>Game ID</label>
 			</div>
-			<aside class='mdl-cell mdl-cell--4-col mdl-cell--8-col-desktop'>
-				<p>
-					Join the game specified by this <b>game ID</b>.
+			<$ if ('game-id' in errors) { $>
+				<p class='shp--error'>
+					<$= errors['game-id'] $>
 				</p>
-				<$ if ('game-id' in errors) { $>
-					<p class='shp--error'>
-						<$= errors['game-id'] $>
-					</p>
-				<$ } $>
-			</aside>
+			<$ } $>
 		</main>
 	</div>
 

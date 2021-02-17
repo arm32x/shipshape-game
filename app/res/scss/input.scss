@@ -1,0 +1,43 @@
+/// ShipShape  >  scss  >  maps
+/// 	Style form input elements. For contenteditable elements, see editboxes.
+
+@import 'colors';
+@import 'typography';
+
+.shp-id-input.shp-id-input {
+    .shp-id-input__input {
+        position: relative;
+        z-index: 1;
+        
+        height: 80px;
+        
+        font: to-rem(64px) $monospace-fonts;
+        
+        @media only screen and (max-width: 479px) {
+            height: 64px;
+            
+            font-size: to-rem(48px);
+        }
+    }
+    
+    .shp-id-input__placeholder {
+        display: inline-block;
+        
+        position: absolute;
+        left: 0px;
+        z-index: 0;
+        
+        height: 80px;
+        
+        color: #9E9E9E;
+        font: to-rem(64px) $monospace-fonts;
+        line-height: 80px;
+
+        @media only screen and (max-width: 479px) {
+            height: 64px;
+            
+            font-size: to-rem(48px);
+            line-height: 64px;
+        }
+    }
+}
