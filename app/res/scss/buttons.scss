@@ -83,9 +83,10 @@
 			background-color: mix(rgba($white-text-color-1, 1.00), $accent-color, 20%);
 		}
 		&.shp-button--light {
+			background-color: #FFFFFF;
 			color: $black-text-color-1;
 			&:not(:disabled):hover {
-				background-color: mix(rgba($black-text-color-1, 1.00), $accent-color, 20%);
+				background-color: mix(rgba($black-text-color-1, 1.00), #FFFFFF, 15%);
 			}
 		}
 

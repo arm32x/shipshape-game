@@ -83,6 +83,20 @@ html {
 }
 
 
+.shp--left-aligned {
+	text-align: left;
+}
+
+.shp--center-aligned {
+	text-align: center;
+}
+
 .shp--right-aligned {
 	text-align: right;
+}
+
+
+#shp-google-sign-in {
+	font-family: "Roboto", $body-text-fonts;
+	font-weight: 500;
 }
